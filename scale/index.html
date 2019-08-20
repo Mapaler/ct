@@ -1,0 +1,137 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CT图比例尺绘制程序</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div id="info" ondragenter="return false" ondragover="return false" ondrop="dropIt(event)">
+	程序说明：
+	<ul class="notice">
+		<li>
+			程序暂时只支持自动获取SkyScan软件输出的BMP/PNG/JPG图片DPI（像素大小），普通图片请手动输入。
+		</li>
+		<li>
+			浏览器不支持X光扫描图片的16位TIFF格式，16位TIFF图片需软件转换为8位BMP才能显示。
+		</li>
+		<li>
+			可同时打开/拖入多张图片，通过预览调整好后，点击“获取下载链接”即可得到完整图片链接，点击即可下载。
+		</li>
+		<li>
+			推荐使用最新的<a href="https://www.mozilla.org/zh-CN/firefox/new/" target="_blank" title="火狐浏览器官网">火狐浏览器</a>，可获得最完整的HTML5体验。目前非火狐浏览器的canvas不支持toBlob()方法，生成的下载地址很长。<br />IE 11无法下载超长的下载地址且不支持颜色选择，Chrome或Opera只能使用Base64地址，很长比较卡但还是能下载，但太大会出现程序崩溃。其他浏览器未作测试。
+		</li>
+	</ul>
+	使用技巧：
+	<ul class="notice">
+		<li>
+			如果懒得获取图片下载链接，可直接右键另存为图片。
+		</li>
+		<li>
+			图片比较大时，比例尺会比较小，甚至小得看不见。此时增大线条粗细与字号即可。
+		</li>
+		<li>
+			像素大小不为整数时，比例尺长度不容易凑整。调整保留小数为负数即可实现四舍五入。例：像素大小为10.72μm时，9像素长度为96.48μm，保留小数设置为-1即可变为100μm。
+		</li>
+		<li>
+			有时由于背景色干扰，文字显示不清晰，可以调整阴影颜色与宽度，使比例尺与背景区分开来。
+		</li>
+		<li>
+			调整颜色时，如果发现颜色始终是白色或黑色，请检查是否忘记调整颜色面板右方的亮度。
+		</li>
+		<li>
+			打开多张图片时，新的图片会复制第一张图片的设置，因此设定第一张图片设置相当于后面图片的默认设置。
+		</li>
+		<li>
+			大图片获得下载地址较慢，使用Firefox时，可分别对多张图片获取下载链接，同时还可进行其他操作（toBlob()方法为异步执行），而Chrome或Opera必须等前一张图片下载链接获取成功后方可继续。
+		</li>
+		<li>
+			Firefox刷新时会保留刷新前的表单设置，而其他浏览器不会。
+		</li>
+	</ul>
+	<div id="openbar">拖动文件到此蓝色区域或点击打开图片: <input type="file" title="打开图片" multiple id="input" onchange="imagesSelected(this.files)" size="10" /></div>
+	<div id="setting">
+		<label>预览图最大宽度<input type="number" class="thumbs-width num_4n" title="预览图最大宽度" min="1" value="496" onInput="this.onchange();" onChange="changeThumbsSize();"></label>
+		<label>预览图最大高度<input type="number" class="thumbs-height num_4n" title="预览图最大高度" min="1" value="372" onInput="this.onchange();" onChange="changeThumbsSize();"></label>
+	</div>
+</div>
+<ul id="pictures">
+<li class="picture">
+	<div class="control">
+		<div class="outbar">
+			<input type="button" title="获取完整大小图片的下载链接" value="获取下载链接 >>" onClick="getDownLink(getPicDom(this));" />
+		</div>
+		<div class="dialog-panel num-panel">
+			<div class="panel-label">数值设定</div>
+				<label>图像分辨率
+					<select class="dpi-mod" title="更改分辨率类型（数值自动换算）" onInput="this.onchange();" onChange="convertDpiNum(getPicDom(this))">
+						<option value="2">像素大小(μm)</option>
+						<option value="1">DPI</option>
+						<option value="0">每米像素点数</option>
+					</select>
+				</label>
+				<input type="number" class="dpi-num num_10n" title="设置图片分辨率" onInput="this.onchange();" onChange="changeDpiNum(getPicDom(this));drawview(getPicDom(this));">
+				<br />
+				<label>单位
+					<select class="show-unit" title="比例尺长度单位" onInput="this.onchange();" onChange="drawview(getPicDom(this));">
+						<option value="9">nm</option>
+						<option value="6" selected="selected">μm</option>
+						<option value="3">mm</option>
+						<option value="2">cm</option>
+						<option value="0">m</option>
+					</select>
+				</label>
+				<label>保留小数<input type="number" class="decimal-digits num_4n" title="比例尺精度（可设负值取整）" value="2" onInput="this.onchange();"onChange="drawview(getPicDom(this));"></label>
+		</div>
+		<div class="dialog-panel">
+			<div class="panel-label">线条外观</div>
+				<!--<label>类型
+					<select class="line-mod">
+						<option value="0">线段</option>
+						<option value="1">箭头</option>
+					</select>
+				</label>-->
+				<label>长度<input type="number" class="line-length num_4n" title="线条长度（像素）" min="0" value="100" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+				<label>粗细<input type="number" class="line-width num_4n" title="线条粗细（像素）" min="1" value="5" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+				<label>颜色<input type="color" class="line-color" title="线条颜色" value="#FFFFFF" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+		</div>
+		<div class="dialog-panel">
+			<div class="panel-label">文字外观</div>
+				<label>字体<input type="text" class="font-family num_4n" value="Arial" title="字体名称（直接输入）" onInput="this.onchange();" onChange="drawview(getPicDom(this));">
+				</label>
+				<label>字号<input class="font-size num_4n" title="字号大小（像素）" type="number" value="20" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+				<label>颜色<input type="color" class="font-color" title="文字颜色" value="#FFFFFF" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+				<label><input type="checkbox" class="font-weight" title="文字加粗" value="bold" onInput="this.onchange();" onChange="drawview(getPicDom(this));">加粗</label>
+		</div>
+		<div class="dialog-panel">
+			<div class="panel-label">整体外观</div>
+			<label>字线间隔<input class="space-width num_4n" title="文字与线条间隔宽度（像素）" type="number" min="0" value="2" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+			<label>阴影色<input class="shadow-color" title="文字与线条下的阴影颜色" type="color" value="#000000" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+			<label>阴影宽度<input class="shadow-blur num_4n" title="阴影模糊宽度（越宽颜色越淡）" type="number" min="0" value="5" onInput="this.onchange();" onChange="drawview(getPicDom(this));"></label>
+		</div>
+		<div  class="dialog-panel">
+			<div class="panel-label">位置设定</div>
+			<label>水平位置<input type="range" class="position-horizontal range" title="比例尺水平位置（比例）" max="100" min="0" step="0.01" value="5" onChange="changeRangeNum(this,'%');drawview(getPicDom(this));" onInput="this.onchange();"></label><span class="position-horizontal-num range-num"></span>
+
+		  <br />
+			<label>垂直位置<input type="range" class="position-vertical range" title="比例尺垂直位置（比例）" max="100" min="0" step="0.01" value="95" onChange="changeRangeNum(this,'%');drawview(getPicDom(this));" onInput="this.onchange();"></label><span class="position-vertical-num range-num"></span>
+		</div>
+	</div>
+    <div class="view">
+		<div class="picture-info">图像预览</div>
+		<canvas class="draw-canvas" width="496" height="372"></canvas>
+    </div>
+</li>
+</ul>
+<div id="copyright">
+	Copyright © 枫谷剑仙版权所有，任何人未经允许不得私自拷贝、传播与商业出售，但个人可在本页面自由免费使用。/Mapaler all right reserved.
+</div>
+<style id="custom-css" type="text/css">
+</style>
+<script type="text/javascript">
+//加载完成后的一些初始化函数
+	changeThumbsSize();
+</script>
+</body>
+</html>

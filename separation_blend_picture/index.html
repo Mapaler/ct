@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>混合图片分离PNG</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ondragenter="return false" ondragover="return false" >
+<div id="main">
+<div id="image1" class="blend-image-box">
+	<div id="blend1-box" class="upbox" ondrop="dropIt(event,blend1,bg1_color)">
+		<div class="caption">混合图1</div>
+		<div class="setting-up"><input id="blend1-file" type="file" onchange="imagesSelected(this.files,blend1,bg1_color)"></div>
+		<canvas id="blend1" width="1476" height="1054"></canvas>
+	</div>
+	<div id="bg1-box" class="downbox" ondrop="dropIt(event,bg1)"> 
+		<div class="caption">背景图1</div>
+		<div class="setting-dowm">
+			<label>
+				使用纯色<input name="bg1-color" id="bg1-color" type="color" onChange="colorSelected(this.value,bg1,blend1)"></label><button type="button" class="getcolor" name="getcolor1" id="getcolor1" onClick="getColor(bg1_color,blend1)" title="从图像中取色，左键选取，中键或右键取消选取。"><img class="icon" src="ic_colorize_black_24px.svg"></button>
+			<br>
+			<label>
+				使用图片<input id="bg1-file" type="file" onchange="imagesSelected(this.files,bg1)" ></label>
+		</div>
+		<canvas id="bg1" width="1476" height="1054"></canvas>
+	</div>
+</div>
+<div id="image2" class="blend-image-box">
+	<div id="blend2-box" class="upbox" ondrop="dropIt(event,blend2,bg2_color)">
+		<div class="caption">混合图2</div>
+		<div class="setting-up"><input id="blend2-file" type="file" onchange="imagesSelected(this.files,blend2,bg2_color)"></div>
+		<canvas id="blend2" width="1476" height="1054"></canvas>
+	</div>
+	<div id="bg2-box" class="downbox" ondrop="dropIt(event,bg2)">
+		<div class="caption">背景图2</div>
+		<div class="setting-dowm">
+			<label>
+				使用纯色<input name="bg2-color" id="bg2-color" type="color" onChange="colorSelected(this.value,bg2,blend2)" ></label><button type="button" class="getcolor" name="getcolor2" id="getcolor2" onClick="getColor(bg2_color,blend2)" title="从图像中取色，左键选取，中键或右键取消选取。"><img class="icon" src="ic_colorize_black_24px.svg"></button>
+			<br>
+			<label>
+				使用图片<input id="bg2-file" type="file" onchange="imagesSelected(this.files,bg2)"></label>
+		</div>
+		<canvas id="bg2" width="1476" height="1054"></canvas>
+	</div>
+</div>
+<div id="src-box" class="blend-image-box">
+	<div id="src1-box" class="upbox">
+		<div class="caption">透明还原图</div>
+		<div class="setting-up"><input type="button" name="executing" id="executing" value="执行分离运算" onclick="run()">之后右键另存图片即可</div>
+		<canvas id="src1" width="1476" height="1054" ></canvas>
+	</div>
+	<div id="error-box" class="downbox">
+		<div class="caption">背景错误区域图</div>
+		<div class="setting-dowm" id="error-count"></div>
+		<canvas id="error1" width="1476" height="1054" ></canvas>
+	</div>
+</div>
+<div id="colorView"></div>
+</div>
+<div id="copyright">
+图像分离计算函数来源于<a href="http://vistaswx.0ginr.com/blog/article/restore-from-blended" target="_blank" title="从已混合的图片中还原出PNG">vIstaswx的博客</a>
+<br>
+	Copyright © 枫谷剑仙版权所有，任何人未经允许不得私自拷贝、传播与商业出售，但个人可在本页面自由免费使用。/Mapaler all right reserved.
+</div>
+<script type="text/javascript" src="script.js" ></script>
+</body>
+</html>
