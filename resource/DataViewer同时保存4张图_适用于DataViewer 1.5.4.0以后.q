@@ -25,7 +25,7 @@ Public Declare Function PostMessage Lib "user32" Alias "PostMessageW" (ByVal hwn
 'Public Declare Function GetWindow Lib "user32" (ByVal hwnd As Long, ByVal wCmd As Long) As Long
 'Public Declare Function FindWindowEx Lib "user32" Alias "FindWindowExA" (ByVal hWnd1 As Long, ByVal hWnd2 As Long, ByVal lpsz1 As String, ByVal lpsz2 As String) As Long
 
-Const DelayTime = 300 '延时毫秒，根据电脑反应速度调整
+Const DelayTime = 500 '延时毫秒，根据电脑反应速度调整
 
 Const BM_CLICK = &HF5
 Const WM_LBUTTONDOWN = &H201
@@ -191,8 +191,3 @@ End Function
 Function add0(num, length)
 	add0 = String(length - Len(num),"0") & num
 End Function
-
-'点击窗口上的按钮
-Event frmMain.btnRun.Click
-	Main(frmMain.iptDir.Text)
-End Event
