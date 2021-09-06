@@ -8,6 +8,31 @@
 	{
 		display: none;
 	}
+	.paper-sample
+	{
+		padding: 10px;
+		border: 1px solid black;
+		display: inline-block;
+	}
+
+	.statement-sample
+	{
+		border-collapse: collapse;
+	}
+	
+	.statement-sample tr:not(.no-border) td
+	{
+		border: 1px solid black;
+	}
+
+	.green
+	{
+		color: green;
+	}
+	.blue
+	{
+		color: blue;
+	}
 </style>
 </head>
 <body>
@@ -43,34 +68,18 @@
 </ul>
 <h2>上机计时</h2>
 <ul>
-	<li>到现场使用具有蓝牙功能的手机，微信扫码上机，上机即开始计时。</li>
+	<li>到现场使用具有<span class="blue">蓝牙</span>功能的手机，<span class="green">微信</span>扫码上机，上机即开始计时。</li>
 	<li>优化装样形式以减少开关门次数，不盲目追求高分辨率，都可以有效减少扫描时间。</li>
 	<li>使用完毕或当日无法做完，请及时下机。(即便是由设备管理员操作，也要记得下机，不然仍然计费)</li>
 </ul>
 <h2>费用结算</h2>
 <ul>
 	<li>定期或一定额度后，必须结算一次。（也可提前结算）</li>
-	<li>由设备管理员按课题组出具结算单（示例见后），完成上方各项签字。</li>
-	<li>到西南医院财务刷卡（建议使用公务卡），西南医院财务返回报销凭证。</li>
+	<li>由设备管理员按课题组出具结算单（示例见后），完成文件内各项签字。</li>
+	<li>到西南医院财务刷卡（微信、支付宝均可），西南医院财务返回报销凭证。</li>
 	<li>使用报销凭证到自身单位报账。</li>
 	<li><h3>结算单示例</h3>
 <style>
-	.paper-sample
-	{
-		padding: 10px;
-		border: 1px solid black;
-		display: inline-block;
-	}
-
-	.statement-sample
-	{
-		border-collapse: collapse;
-	}
-	
-	.statement-sample tr:not(.no-border) td
-	{
-		border: 1px solid black;
-	}
 </style>
 		<div class="paper-sample">
 			<table class="statement-sample">
@@ -119,50 +128,50 @@
 					<td>1</td>
 					<td>导师1</td>
 					<td>XX科</td>
-					<td>　</td>
-					<td>　</td>
+					<td><span class="blue">[经费项目编号]</span></td>
+					<td><span class="blue">[经费项目名称]</span></td>
 					<td colspan=2>13XXXXXXXXX</td>
-					<td colspan=2>　</td>
+					<td colspan=2><span class="blue">[经费复责人签字]</span></td>
 				</tr>
 				<tr>
 					<td colspan=2 rowspan=2>科室领导审核：
 						<br>
-						[实验人领导签字]<br>
+						<span class="blue">[经费复责人领导签字]</span><br>
 						<br>
 						<br>
 						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
 					</td>
 					<td rowspan=2>设备管理员审核:
 						<br>
-						[设备管理员签字（我）]<br>
+						<span class="blue">[设备管理员签字（我）]</span><br>
 						<br>
 						<br>
 						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
 					</td>
 					<td rowspan=2>共享分平台负人：
 						<br>
-						[骨科实验室平台负人签字]<br>
+						<span class="blue">[骨科实验室平台负人签字]</span><br>
 						<br>
 						<br>
 						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
 					</td>
 					<td colspan=3 rowspan=2>院、处领导审签：
 						<br>
-						[本院：根据报账需求签字]<br>
-						[外单位：西南医院科研科签字]<br>
+						<span class="blue">[本院：根据报账需求签字]<br>
+						[外单位：西南医院科研科签字]</span><br>
 						<br>
 						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
 					</td>
 					<td colspan=2>财务审核人：
 						<br>
-						[西南医院财务签字]<br>
+						<span class="blue">[西南医院财务签字]</span><br>
 						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
 					</td>
 				</tr>
 				<tr>
 					<td colspan=2>经办人：
 						<br>
-						[报账人签字]<br>
+						<span class="blue">[报账人签字]</span><br>
 						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
 					</td>
 				</tr>
@@ -222,8 +231,10 @@
 		</div><br>
 		备注：
 		<ul>
-			<li>骨科实验室平台负人签字：3051，<strong>于博</strong></li>
-			<li>西南医院科研科签字：教学楼7楼南侧，科研科办公室1，找<strong>孙怡</strong>干事带给科研科李主任签字。若不在，可交由7楼北侧医务处办公室<strong>白老师</strong>代办机关签字。</li>
+			<li>骨科实验室平台负人签字：科技楼3051室，<strong>于博</strong>(男)老师。</li>
+			<li>西南医院科研科签字：教学楼7楼南侧，科研科办公室1，找<strong>孙怡</strong>(女)干事初审，再由<strong>科研科李主任</strong>签字。若不在，可交由7楼北侧医务处办公室<strong>白老师</strong>代办机关签字。</li>
+			<li>西南医院财务签字：教学楼8楼南侧，财务大办公室，进门前方横排左数第一位，管报销的<strong>刘老师</strong>(女)。</li>
+			
 		</ul>
 	</li>
 </ul>
