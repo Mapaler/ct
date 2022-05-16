@@ -26,6 +26,41 @@
 		border: 1px solid black;
 	}
 
+	.receipt-sample
+	{
+		border-collapse: collapse;
+		color: green;
+	}
+
+	.receipt-sample .title
+	{
+		text-align: center;
+		font-weight: bold;
+		font-family: 楷体;
+		font-size: 2em;
+		text-decoration:underline;
+		padding-top: 15px;
+		position: relative;
+	}
+	.receipt-sample .title::after
+	{
+		content: "红★章";
+		border: 5px double red;
+		border-radius: 50%;
+		position: absolute;
+		width: 150px;
+		height: 70px;
+		color: red;
+		line-height: 70px;
+		top: -5px;
+		left: 320px;
+		opacity: 0.6;
+	}
+	.receipt-sample tr:not(.no-border) td
+	{
+		border: 2px solid green;
+	}
+
 	.red
 	{
 		color: red;
@@ -91,11 +126,9 @@
 <ul>
 	<li>每半年或一定额度后，必须结算一次。（也可提前结算）</li>
 	<li>由设备管理员按课题组出具结算单（示例见后），完成文件内各项<i class="fas fa-file-signature"></i>签字。</li>
-	<li>到西南医院财务<i class="fas fa-hand-holding-usd"></i>支付费用，<i class="far fa-credit-card"></i>刷卡（<span class="green"><i class="fab fa-weixin"></i>微信</span>、<span class="blue"><i class="fab fa-alipay"></i>支付宝</span>均可），西南医院财务返回<i class="fas fa-file-invoice-dollar"></i>报销凭证。</li>
+	<li>到西南医院财务<i class="fas fa-hand-holding-usd"></i>支付费用，<i class="far fa-credit-card"></i>刷卡（<span class="green"><i class="fab fa-weixin"></i>微信</span>、<span class="blue"><i class="fab fa-alipay"></i>支付宝</span>均可），西南医院财务返回<i class="fas fa-file-invoice-dollar"></i>报销凭证（示例见后）。</li>
 	<li>使用<i class="fas fa-file-invoice-dollar"></i>报销凭证到自身单位报账。</li>
 	<li><h3>结算单示例</h3>
-<style>
-</style>
 		<div class="paper-sample">
 			<table class="statement-sample">
 				<tr class="no-border">
@@ -249,8 +282,44 @@
 			<li>骨科实验室平台负责人签字：科技楼 3053 室，<i class="fas fa-female"></i><b>邓墨渊</b> 老师。</li>
 			<li>西南医院科研科签字：教学楼7楼南侧 科研科办公室１，找 <i class="fas fa-female"></i><b>孙怡</b> 干事初审，再由 <b>科研科李主任</b> 签字。<br>若不在，可交由7楼北侧 医务处办公室１ 的 <i class="fas fa-female"></i><b>白老师</b> 代办机关签字（过一段时间签好后再去拿）。星期五下午白老师也开会不在。</li>
 			<li>西南医院财务签字：教学楼8楼南侧，财务大厅，管科研经费报销的 <i class="fas fa-female"></i><b>刘老师</b>。</li>
-			
 		</ol>
+	</li>
+	<li><h3>报销凭证示例</h3>
+		<div class="paper-sample">
+			<table class="receipt-sample">
+				<tr class="no-border">
+					<td colspan=9 class="title">中国人民解放军资金往来结算票据</td>
+				</tr>
+				<tr class="no-border">
+					<td colspan=3 style="text-align: right;">(2018):<span style="color:blue">123412341234</span></td>
+				</tr>
+				<tr class="no-border">
+					<td width="250">付款单位：</td>
+					<td width="300" style="text-align: center;">年&nbsp;&nbsp;月&nbsp;&nbsp;日</td>
+					<td width="250">支票号：</td>
+				</tr>
+				<tr style="text-align: center;">
+					<td>项&emsp;目</td>
+					<td>内&emsp;容</td>
+					<td>金&emsp;额</td>
+				</tr>
+				<tr>
+					<td height="200"></td>
+					<td></td>
+					<td></td>
+					<td style="border: none; writing-mode: vertical-lr;"><span>第二联&emsp;付款单位记账</span></td>
+				</tr>
+				<tr>
+					<td colspan=2>金额合计（大写）：</td>
+					<td></td>
+				</tr>
+				<tr class="no-border">
+					<td>收款单位（盖章）：</td>
+					<td>收款人：</td>
+					<td>交款人：</td>
+				</tr>
+			</table>
+		</div>
 	</li>
 </ul>
 </body>
