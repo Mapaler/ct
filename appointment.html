@@ -36,7 +36,7 @@
 	{
 		text-align: center;
 		font-weight: bold;
-		font-family: 楷体;
+		font-family: "楷体";
 		font-size: 2em;
 		text-decoration:underline;
 		padding-top: 15px;
@@ -61,6 +61,39 @@
 		border: 2px solid green;
 	}
 
+	.accounting-documents {
+		display: grid;
+		grid-gap: 5px;
+		width: max-content;
+		grid-template:
+		"标题 标题 标题 ." 2.2em
+		"填制单位 年月日 序号 ." 25px
+		"表格 表格 表格 单据张" auto
+		"主任 复核 填制 ." 25px
+		 / 300px 200px 200px 20px;
+	}
+	.accounting-documents .title
+	{
+		text-align: center;
+		font-weight: bold;
+		font-family: "宋体";
+		font-size: 2em;
+		text-decoration:underline;
+		letter-spacing: 1em;
+		position: relative;
+	}
+	.accounting-documents table {
+		border: 2px solid black;
+		border-collapse: collapse;
+	}
+	.accounting-documents table thead td {
+		text-align: center;
+		word-spacing: 2em;
+	}
+	.accounting-documents table td {
+		border: 1px solid black;
+		height: 30px;
+	}
 	.red
 	{
 		color: red;
@@ -129,11 +162,17 @@
 <ul>
 	<li>每半年或一定额度后，必须结算一次。（也可提前结算）</li>
 	<li>由设备管理员按课题组出具结算单（示例见后），完成文件内各项<i class="fas fa-file-signature"></i>签字。</li>
-	<li>到西南医院财务<i class="fas fa-hand-holding-usd"></i>支付费用。本院可直接划拨经费，院外（含学校）不支持直接公对公转账，<i class="far fa-credit-card"></i>刷卡、<span class="green"><i class="fab fa-weixin"></i>微信</span>、<span class="blue"><i class="fab fa-alipay"></i>支付宝</span>均可，西南医院财务返回<i class="fas fa-file-invoice-dollar"></i>付款凭证（院外单位刷卡凭证示例见后）。</li>
-	<li>院外单位使用<i class="fas fa-file-invoice-dollar"></i>付款凭证到自身单位报账。</li>
-	<li><span class="red"><i class="fa-solid fa-triangle-exclamation"></i>重要：</span>因为财务与共享平台并未对接，需要找<strong><i class="fas fa-male"></i>杨永军</strong>进行共享平台核销，如下图。（也可将<i class="fas fa-file-invoice-dollar"></i>付款凭证拍照发给我，然后我拿去找<strong><i class="fas fa-male"></i>杨永军</strong>）<br>
+	<li>到西南医院财务<i class="fas fa-hand-holding-usd"></i>支付费用。
+		<ul>
+			<li>本院可直接划拨经费，在财务查询记账凭证（见下方示例）以便核销。</li>
+			<li>院外（含学校）不支持直接公对公转账，<i class="far fa-credit-card"></i>刷卡、<span class="green"><i class="fab fa-weixin"></i>微信</span>、<span class="blue"><i class="fab fa-alipay"></i>支付宝</span>均可，西南医院财务返回<i class="fas fa-file-invoice-dollar"></i>付款凭证（见下方示例），回自身单位报账。</li>
+		</ul>
+	</li>
+	<li><span class="red"><i class="fa-solid fa-triangle-exclamation"></i>重要：</span>因为财务与共享平台并未对接，需要找<strong><i class="fas fa-male"></i>杨永军</strong>进行共享平台核销，如下图。<br>
 		若不进行核销，系统里这笔钱将永远是未确认状态，会导致账号因为欠费不能预约后续的实验。<br>
-		<img src="images/appointment/结算后核销.png"></li>
+		<img src="images/appointment/结算后核销.png"><br>
+		（也可将<i class="fas fa-file-invoice-dollar"></i>付款凭证拍照发给我，然后我拿去找<strong><i class="fas fa-male"></i>杨永军</strong>）
+	</li>
 	<li><h3>结算单示例</h3>
 		<div class="paper-sample">
 			<table class="statement-sample">
@@ -291,6 +330,38 @@
 			<li>西南医院财务签字：教学楼8楼南侧，财务大厅，找管科研经费报销的老师会告诉你后面怎么做。</li>
 		</ol>
 	</li>
+	<li><h3>院内记账凭证示例</h3>
+		<div class="paper-sample accounting-documents">
+			<div class="title" style="grid-area: 标题;">记账凭证</div>
+			<div style="grid-area: 填制单位;">填制单位：&#38470;&#20891;&#20891;&#21307;大学第一附属医院</div>
+			<div style="text-align: center; grid-area: 年月日;">2022年02月28日</div>
+			<div style="text-align: right; grid-area: 序号;">第 12345 号</div>
+			<table style="grid-area: 表格;">
+				<thead>
+					<tr>
+						<td style="width: 350px">科 目 名 称</td>
+						<td style="width: 170px">摘 要</td>
+						<td style="width: 30px">借或贷</td>
+						<td style="width: 150px">金 额</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td>123JF45-专项经费/XXXX/XXXX</td><td>XX科转骨科共享设备</td><td style="text-align: center;">借</td><td style="text-align: right;">33,300.00</td></tr>
+					<tr><td>678JF10-正常经费/XXX/科研设备共享专户</td><td>XX科转骨科共享设备</td><td style="text-align: center;">贷</td><td style="text-align: right;">33,300.00</td></tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+				</tbody>
+			</table>
+			<div style="writing-mode: vertical-lr; text-align: center; word-spacing: 2em; grid-area: 单据张;">附 单 据&nbsp;&nbsp;张</div>
+			<div style="grid-area: 主任;">主任：</div>
+			<div style="grid-area: 复核;">复核：</div>
+			<div style="grid-area: 填制;">填制：</div>
+		</div>
+	</li>
 	<li><h3>外单位付款凭证示例</h3>
 		<div class="paper-sample">
 			<table class="receipt-sample">
@@ -314,7 +385,7 @@
 					<td height="200"></td>
 					<td></td>
 					<td></td>
-					<td style="border: none; writing-mode: vertical-lr; text-align: center;">第二联&emsp;付款单位记账<br>不得作为报销凭证</td>
+					<td style="border: none; writing-mode: vertical-lr; text-align: center; width: 42px;">第二联&emsp;付款单位记账<br>不得作为报销凭证</td>
 				</tr>
 				<tr>
 					<td colspan=2>金额合计（大写）：</td>
