@@ -17,6 +17,7 @@
 		padding: 10px;
 		border: 1px solid black;
 		display: inline-block;
+		box-shadow: 2px 2px 2px black;
 	}
 
 	.statement-sample
@@ -109,303 +110,324 @@
 	{
 		color: blue;
 	}
+	.some-word::before {
+		content:"大团结"
+	}
+	summary {
+		cursor: pointer;
+	}
+	summary:hover {
+		background-color:lightgrey;
+	}
+	summary>h2,
+	summary>h3
+	{
+		display: inline;
+	}
 </style>
 </head>
 <body>
 <h1>预约实验</h1>
-<p>西南医院属于&#20891;队管辖单位，按&#20891;队规定不对外提供服务，因此仅允许<b>&#38470;&#20891;&#20891;&#21307;大学</b>附属范围（大学、附属医院等）内注册共享。<br>不过大学因为同时归教育部管，按教育部规定要对其他高校开放实验室，其他高校的可以去问问他们那边的<a href="index.html#in-vivo">活体 CT</a>。</p>
+<p>西南医院，按上级管辖部门规定不对外提供服务，因此仅允许<b>大学附属范围</b>（大学、附属医院等）内注册共享。<br>不过大学因为同时归教育部管，按教育部规定要对其他高校开放实验室，其他高校的可以去问问他们那边的<a href="index.html#in-vivo">活体 CT</a>。</p>
 <p>以下流程为按次付费使用仪器的流程。办进中心实验室，既需缴纳600元/月细胞、生化平台管理费的形式，有其他流程，请参考 <a href="http://www.xnyy.cn/lcyx/index/fwzn.htm" >临床医学研究中心官网</a></p>
-<h2>注册西南医院仪器共享平台</h2>
-<ul>
-	<li><span class="blue"><i class="fab fa-internet-explorer"></i>浏览器</span>访问西南医院仪器共享平台，<a href="http://192.168.48.91/">西南医院内网</a> | <s><a href="http://113.204.149.26:7999/">互联网</a></s>（因信息中心网络重组，所有外网功能法使用）</li>
-	<li>右上角注册你的平台帐号。<br><img src="images/appointment/注册按钮.png"></li>
-	<li>注意均选择<strong>院内注册</strong>。院外注册指的是第三方企业等，但是并不对他们提供服务。<br>
-		单位机构处，西南医院内选择具体科室，学校和其他医院只有单位整体一项可选。<br>
-		由于系统脱离互联网，找回密码功能已不可用，请不要忘记密码。<br>
-		<img src="images/appointment/注册身份选择.webp"><br>
-	</li>
-	<li>注意导师课题组在本平台没有账号的，需要先以导师名义注册。因为学生账号费用只能挂靠到课题组名下，没有导师帐号无法直接建学生账号。（不知道有没有的话我可以在系统里查询）<br>
-		有导师帐号后，如果导师同意，学生也可以直接用导师帐号。但建议让学生自建账号，可以管理不同学生的花费。</li>
-	<li>此时账号只有游客访问权限。</li>
-</ul>
-<h2>开通账号预约设备权限(平台审核资金资质)</h2>
-<ul>
-	<li>点击我的账号，进入个人中心<br>
-	<img src="images/appointment/我的帐号.png"></li>
-	<li>未审核账号会提示打印申请表，将其下载修改后打印。<br>
-		<img src="images/appointment/下载申请表.png"></li>
-	<li>导师帐号需要附上<i class="fas fa-search-dollar"></i>科研资金出处证明（非西南医院导师是要求提供在研项目任务书）；学生账号直接挂靠导师账号即可（外单位可以提供导师学生关系证明）。</li>
-	<li>到西南医院科技中心中心实验室大玻璃门内，左转楼梯上 2楼 找 2011 结算室<strong><i class="fas fa-female"></i>张倩 <i class="fas fa-phone"></i>177 8356 8901</strong>（负责院内）或 1楼 电梯旁通道 1029 助理研究员办公室 <strong><i class="fas fa-male"></i>杨永军 <i class="fas fa-phone"></i>177 8303 4529</strong>（负责院外）<i class="fas fa-user-check"></i>审核。</li>
-	<li><i class="fas fa-user-check"></i>审核通过后账户才可预约使用仪器。</li>
-	<li>之后的预约操作在<span class="blue"><i class="fab fa-internet-explorer"></i>网页版</span>上进行，<s>也可以选择平台<span class="green"><i class="fab fa-weixin"></i>微信</span>公众号。</s>（因信息中心网络重组，所有外网功能暂无法使用）<br>
-		<s>搜索关注“佰能预约助手”，并绑定平台账号，选择“&#38470;&#20891;&#20891;&#21307;大学第一附属医院”。</s><br>
-		<a class="display-none" href="http://weixin.qq.com/r/6zo7I8bEaJsXrYJA92-5"><img src="images/佰能预约助手.svg" width=200 height=200 alt="公众号二维码" /></a></li>
-</ul>
-<h2>申请具体设备使用权限(设备管理员审核)</h2>
-<ul>
-	<li>预约仪器前需先向设备管理员申请该设备的“使用设备权限”。</li>
-	<li>在<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span><s>或<span class="green"><i class="fab fa-weixin"></i>微信</span></s>找到“离体锥形微焦CT”，申请使用。<br>
-		<img src="images/appointment/搜索仪器.png"><br>
-		<img src="images/appointment/申请使用权限.png"></li>
-	<li>等待设备管理员（就是我）审核通过后，便可预约使用时间了。</li>
-</ul>
-<h2>预约使用时间</h2>
-<ul>
-	<li>本离体型显微CT对装样有一定要求，可参考<a href="LOAD.html">装样示例</a>。</li>
-	<li>不熟悉的，请先联系我<i class="fas fa-comments"></i>讨论。</li>
-	<li>具体预约时间也需要讨论后再去申请。</li>
-	<li>在<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span><s>或<span class="green"><i class="fab fa-weixin"></i>微信</span></s>均可预约使用时间。<br>
-		<img src="images/appointment/网页预约.png"></li>
-</ul>
-<h2>上机计时</h2>
-目前只能采用手动计费
-<s>
-<ul>
-	<li>本设备<i class="fas fa-qrcode"></i>扫码上机必须先到<span class="green"><i class="fab fa-weixin"></i>微信</span>公众号“佰能预约助手”内绑定你的账号。</li>
-	<li>到现场使用具有<span class="blue"><i class="fab fa-bluetooth"></i>蓝牙</span>功能的手机，<span class="green"><i class="fab fa-weixin"></i>微信</span><i class="fas fa-qrcode"></i>扫码上机，上机即开始计时。（别忘给手机<span class="red"><i class="fas fa-battery-quarter"></i>充电</span>）</li>
-	<li>优化装样形式以减少开关门次数，不盲目追求高分辨率，都可以有效减少<i class="far fa-clock"></i>扫描时间。</li>
-	<li>使用完毕或当日无法做完，请及时<i class="fas fa-qrcode"></i>扫码下机。(即便是由设备管理员操作，也要记得下机，不然仍然<i class="fas fa-dollar-sign"></i>计费)</li>
-</ul>
-</s>
-<h2 id="final-estimate">费用结算</h2>
+<details>
+	<summary><h2>注册西南医院仪器共享平台</h2></summary>
+	<ul>
+		<li><span class="blue"><i class="fab fa-internet-explorer"></i>浏览器</span>访问西南医院仪器共享平台，<a href="http://192.168.48.91/">西南医院内网</a></li>
+		<li>右上角注册你的平台帐号。<br><img src="images/appointment/注册按钮.png"></li>
+		<li>注意均选择<strong>院内注册</strong>。不对院外注册提供服务。<br>
+			单位机构处，西南医院内选择具体科室，学校和其他附属医院只有单位整体一项可选。<br>
+			由于系统脱离互联网，找回密码功能已不可用，<b>请不要忘记密码</b>。<br>
+			<img src="images/appointment/注册身份选择.webp"><br>
+		</li>
+		<li>注意导师课题组在本平台没有账号的，需要先以导师名义注册。因为学生账号费用只能挂靠到课题组名下，没有导师帐号无法直接建学生账号。（不知道有没有的话我可以在系统里查询）<br>
+			有导师帐号后，如果导师同意，学生也可以直接用导师帐号。但建议让学生自建账号，可以管理不同学生的花费。</li>
+		<li>这样注册账号后暂时只有游客访问权限，需要进一步开通预约设备权限。</li>
+	</ul>
+</details>
+<details>
+	<summary><h2>开通账号预约设备权限(平台审核资金资质)</h2></summary>
+	<ul>
+		<li>点击我的账号，进入个人中心<br>
+		<img src="images/appointment/我的帐号.png"></li>
+		<li>未审核账号会提示打印申请表，将其下载修改后打印。<br>
+			<img src="images/appointment/下载申请表.png"></li>
+		<li>导师帐号需要附上<i class="fas fa-search-dollar"></i>科研资金出处证明（非西南医院导师要求提供在研项目任务书等）；学生账号直接挂靠导师账号即可。</li>
+		<li>到西南医院科技中心中心实验室大玻璃门内，左转楼梯上 2楼 找 2011 结算室<b><i class="fas fa-female"></i>张倩</b>（负责院内）或 1楼 电梯旁通道 1029 助理研究员办公室 <b><i class="fas fa-male"></i>杨永军</b>（负责院外）<i class="fas fa-user-check"></i>审核。</li>
+		<li><i class="fas fa-user-check"></i>审核通过后账户才可预约使用仪器。</li>
+		<li>之后的预约操作在<span class="blue"><i class="fab fa-internet-explorer"></i>网页版</span>上进行。</li>
+	</ul>
+</details>
+<details>
+	<summary><h2>申请具体设备使用权限(具体设备管理员审核)</h2></summary>
+	<ul>
+		<li>预约仪器前需先向设备管理员申请该设备的“使用设备权限”。</li>
+		<li>在<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span>找到“离体锥形微焦CT (SKYSCAN1272)”。<br>
+			<img src="images/appointment/搜索仪器.png">
+		<li>点击“申请”按钮申请使用。</li>
+			<img src="images/appointment/申请使用权限.png"></li>
+		<li>等待设备管理员（就是我）审核通过后，便可预约使用时间了。</li>
+	</ul>
+</details>
+<details>
+	<summary><h2>预约使用时间</h2></summary>
+	<ul>
+		<li>本离体型显微CT对装样有一定要求，可参考<a href="LOAD.html">装样示例</a>。</li>
+		<li>不熟悉的，请先联系我<i class="fas fa-comments"></i>讨论。</li>
+		<li>具体预约时间也需要讨论后再去申请。</li>
+		<li>在<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span>预约使用时间。<br>
+			<img src="images/appointment/网页预约.png"></li>
+	</ul>
+</details>
+<details>
+	<summary><h2>上机计时</h2></summary>
+	目前只能由管理员手动计费
+</details>
+<h1 id="final-estimate">费用结算</h1>
 <ul>
 	<li>每半年或一定额度后，必须结算一次。（也可提前结算）</li>
-	<li>由设备管理员按课题组出具结算单（示例见后），完成文件内各项<i class="fas fa-file-signature"></i>签字。</li>
+	<li>由设备管理员按课题组出具结算单，完成文件内各项<i class="fas fa-file-signature"></i>签字。
+		<details>
+			<summary><b>结算单示例</b></summary>
+			<div class="paper-sample">
+				<table class="statement-sample">
+					<tr class="no-border">
+						<td colspan=9 style="text-align: center; font-weight: bold; font-size: 1.2em;">XXXX大学附属第一医院科研实验项目费用结算单<br>
+							导师1的课题组 2021年12月1日前 显微CT账目结算单
+						</td>
+					</tr>
+					<tr class="no-border">
+						<td>编号:</td>
+						<td colspan=5>J2021XXX</td>
+						<td colspan=3>骨科</td>
+					</tr>
+					<tr>
+						<td colspan=2>开始时间</td>
+						<td colspan=2>2021年9月1日</td>
+						<td colspan=2>结束时间</td>
+						<td colspan=3>2021年11月10日</td>
+					</tr>
+					<tr>
+						<td colspan=2>设备管理员</td>
+						<td colspan=2>代其杰&nbsp;</td>
+						<td colspan=2>结算时间</td>
+						<td colspan=3>2021年12月1日</td>
+					</tr>
+					<tr>
+						<td colspan=2>总金额</td>
+						<td>7000元</td>
+						<td colspan=6 style="text-align: right;">(大写)柒仟圆整</td>
+					</tr>
+					<tr>
+						<td colspan=5>结算单付费信息:</td>
+						<td colspan=2>总人数:</td>
+						<td colspan=2>1</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>课题负责人</td>
+						<td>科室</td>
+						<td>经费项目编号</td>
+						<td>经费项目名称</td>
+						<td colspan=2>联系电话</td>
+						<td colspan=2>项目负责人：</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>导师1</td>
+						<td>XX科</td>
+						<td><span class="blue">[经费项目编号]</span></td>
+						<td><span class="blue">[经费项目名称]</span></td>
+						<td colspan=2>13XXXXXXXXX</td>
+						<td colspan=2><span class="blue">[经费负责人签字]</span></td>
+					</tr>
+					<tr>
+						<td colspan=2 rowspan=2>科室领导审核：
+							<br>
+							<span class="blue">[经费负责人科室领导签字]</span><br>
+							<br>
+							<br>
+							&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+						</td>
+						<td rowspan=2>设备管理员审核:
+							<br>
+							<span class="blue">[设备管理员签字（我）]</span><br>
+							<br>
+							<br>
+							&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+						</td>
+						<td rowspan=2>共享分平台负责人：
+							<br>
+							<span class="blue">[骨科实验室平台负责人签字<sup>*1</sup>]</span><br>
+							<br>
+							<br>
+							&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+						</td>
+						<td colspan=3 rowspan=2>院、处领导审签：
+							<br>
+							<span class="blue">[西南医院科研科签字<sup>*2</sup>]</span><br>
+							<br>
+							<br>
+							&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+						</td>
+						<td colspan=2>财务审核人：
+							<br>
+							<span class="blue">[西南医院财务<sup>*3</sup>]</span><br>
+							&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2>经办人：
+							<br>
+							<span class="blue">[报账人签字]</span><br>
+							&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
+						</td>
+					</tr>
+					<tr class="no-border">
+						<td colspan=9>
+							填写说明：
+							<ol>
+								<li>必须填写经费项目编号，经费项目名称，经费负责人，科室领导审核；</li>
+								<li>经费项目编号：填写所报经费的相关经费项目编号；</li>
+								<li>经费项目名称：填写所报经费的相关经费项目名称；</li>
+								<li>经费负责人：课题经费复责人签字；</li>
+								<li>科室领导审核：科室领导签字。</li>
+							</ol>
+						</td>
+					</tr>
+					<tr class="no-border">
+						<td colspan=9 style="text-align: center; font-size: 1.1em;">&#38470;&#20891;&#20891;&#21307;大学附属第一医院科研实验项目扣费明细</td>
+					</tr class="no-border">
+					<tr>
+						<td colspan=5>预约使用扣费明细</td>
+						<td colspan=4 style="text-align: right;">总共: 7000元</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>使用者</td>
+						<td>设备</td>
+						<td>使用开始时间</td>
+						<td>使用结束时间</td>
+						<td>收费时长</td>
+						<td>收费标准</td>
+						<td>实收费</td>
+						<td>付费人</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>研究生1</td>
+						<td>离体锥形微焦CT</td>
+						<td>2021-09-01 09:00</td>
+						<td>2021-09-01 12:00</td>
+						<td>3.00</td>
+						<td>1000/小时</td>
+						<td>3000</td>
+						<td>导师1</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>研究生2</td>
+						<td>离体锥形微焦CT</td>
+						<td>2021-11-10 15:00</td>
+						<td>2021-11-10 19:00</td>
+						<td>4.00</td>
+						<td>1000/小时</td>
+						<td>4000</td>
+						<td>导师1</td>
+					</tr>
+				</table>
+			</div><br>
+			备注：
+			<ol>
+				<li>骨科实验室平台负责人签字：科技楼 3053 室，<i class="fas fa-male"></i><b>窦策</b>。(经常不在，留在这里等签好再拿走即可)</li>
+				<li>西南医院科研科签字：教学楼7楼东侧（靠近外科楼） 科研科办公室１，找 <i class="fas fa-female"></i><b>孙助理</b> 初审，并根据其指示做进一步呈批。<br>
+					若不在，可交由7楼西侧（靠近血液病中心） 医务处办公室１ 的 <i class="fas fa-female"></i><b>白老师</b> 代办机关签字（过一段时间签好后再去拿）。但星期五下午白老师也要开会，不在办公室。</li>
+				<li>西南医院财务签字：教学楼8楼东侧，财务大厅，找管科研经费报销的老师会告诉你后面怎么做。</li>
+			</ol>
+		</details>
+	</li>
 	<li>到西南医院财务<i class="fas fa-hand-holding-usd"></i>支付费用。
 		<ul>
-			<li>西南医院本院内直接划拨经费，在财务查询记账凭证（见下方示例）以便核销。</li>
-			<li>院外（含学校、新桥、大坪等）不支持直接公对公转账，<i class="far fa-credit-card"></i>刷卡、<span class="green"><i class="fab fa-weixin"></i>微信</span>、<span class="blue"><i class="fab fa-alipay"></i>支付宝</span>均可，西南医院财务返回<i class="fas fa-file-invoice-dollar"></i>付款凭证（见下方示例），回自身单位报账。</li>
+			<li>西南医院本院内直接划拨经费，在财务查询记账凭证（见下方示例）以便核销。
+				<details>
+					<summary><b>院内记账凭证示例</b></summary>
+					<div class="paper-sample accounting-documents">
+						<div class="title" style="grid-area: 标题;">记账凭证</div>
+						<div style="grid-area: 填制单位;">填制单位：XXXX大学第一附属医院</div>
+						<div style="text-align: center; grid-area: 年月日;">2022年02月28日</div>
+						<div style="text-align: right; grid-area: 序号;">第 12345 号</div>
+						<table style="grid-area: 表格;">
+							<thead>
+								<tr>
+									<td style="width: 350px">科 目 名 称</td>
+									<td style="width: 170px">摘 要</td>
+									<td style="width: 30px">借或贷</td>
+									<td style="width: 150px">金 额</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>123JF45-专项经费/XXXX/XXXX</td><td>XX科转骨科共享设备</td><td style="text-align: center;">借</td><td style="text-align: right;">33,300.00</td></tr>
+								<tr><td>678JF10-正常经费/XXX/科研设备共享专户</td><td>XX科转骨科共享设备</td><td style="text-align: center;">贷</td><td style="text-align: right;">33,300.00</td></tr>
+								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td></tr>
+							</tbody>
+						</table>
+						<div style="writing-mode: vertical-lr; text-align: center; word-spacing: 2em; grid-area: 单据张;">附 单 据&nbsp;&nbsp;张</div>
+						<div style="grid-area: 主任;">主任：</div>
+						<div style="grid-area: 复核;">复核：</div>
+						<div style="grid-area: 填制;">填制：</div>
+					</div>
+				</details>
+			</li>
+			<li>院外（含学校、附属医院等）不支持直接公对公转账，需自行<i class="far fa-credit-card"></i>刷卡、<span class="green"><i class="fab fa-weixin"></i>微信</span>、<span class="blue"><i class="fab fa-alipay"></i>支付宝</span>垫付，西南医院财务返回<i class="fas fa-file-invoice-dollar"></i>付款凭证（见下方示例），回自身单位报账。
+				<details>
+					<summary><b>外单位付款凭证示例</b></summary>
+					<div class="paper-sample">
+						<table class="receipt-sample">
+							<tr class="no-border">
+								<td colspan=9 class="title">&#20013;&#22269;&#20154;&#27665;<span class="some-word"></span>资金往来结算票据</td>
+							</tr>
+							<tr class="no-border">
+								<td colspan=3 style="text-align: right;">(2018):<span style="color:blue">123412341234</span></td>
+							</tr>
+							<tr class="no-border">
+								<td width="250">付款单位：</td>
+								<td width="300" style="text-align: center;">年&nbsp;&nbsp;月&nbsp;&nbsp;日</td>
+								<td width="250">支票号：</td>
+							</tr>
+							<tr style="text-align: center;">
+								<td>项&emsp;目</td>
+								<td>内&emsp;容</td>
+								<td>金&emsp;额</td>
+							</tr>
+							<tr>
+								<td height="200"></td>
+								<td></td>
+								<td></td>
+								<td style="border: none; writing-mode: vertical-lr; text-align: center; width: 42px;">第二联&emsp;付款单位记账<br>不得作为报销凭证</td>
+							</tr>
+							<tr>
+								<td colspan=2>金额合计（大写）：</td>
+								<td></td>
+							</tr>
+							<tr class="no-border">
+								<td>收款单位（盖章）：</td>
+								<td>收款人：</td>
+								<td>交款人：</td>
+							</tr>
+						</table>
+					</div>
+				</details>
+			</li>
 		</ul>
 	</li>
-	<li><span class="red"><i class="fa-solid fa-triangle-exclamation"></i>重要：</span>因为财务与共享平台并未对接，需要找<strong><i class="fas fa-male"></i>杨永军/<i class="fas fa-female"></i>张倩</strong>进行共享平台核销，如下图。<br>
+	<li><span class="red"><i class="fa-solid fa-triangle-exclamation"></i>重要：</span>因为财务与共享平台并未对接，需要带付款凭证找<strong><i class="fas fa-male"></i>杨永军/<i class="fas fa-female"></i>张倩</strong>进行共享平台核销，如下图。<br>
 		若不进行核销，系统里这笔钱将永远是未确认状态，会导致账号因为欠费不能预约后续的实验。<br>
 		<img src="images/appointment/结算后核销.png"><br>
-	</li>
-	<li><h3>结算单示例</h3>
-		<div class="paper-sample">
-			<table class="statement-sample">
-				<tr class="no-border">
-					<td colspan=9 style="text-align: center; font-weight: bold; font-size: 1.2em;">&#38470;&#20891;&#20891;&#21307;大学附属第一医院科研实验项目费用结算单<br>
-						导师1的课题组 2021年12月1日前 显微CT账目结算单
-					</td>
-				</tr>
-				<tr class="no-border">
-					<td>编号:</td>
-					<td colspan=5>J2021XXX</td>
-					<td colspan=3>骨科</td>
-				</tr>
-				<tr>
-					<td colspan=2>开始时间</td>
-					<td colspan=2>2021年9月1日</td>
-					<td colspan=2>结束时间</td>
-					<td colspan=3>2021年11月10日</td>
-				</tr>
-				<tr>
-					<td colspan=2>设备管理员</td>
-					<td colspan=2>代其杰&nbsp;</td>
-					<td colspan=2>结算时间</td>
-					<td colspan=3>2021年12月1日</td>
-				</tr>
-				<tr>
-					<td colspan=2>总金额</td>
-					<td>7000元</td>
-					<td colspan=6 style="text-align: right;">(大写)柒仟圆整</td>
-				</tr>
-				<tr>
-					<td colspan=5>结算单付费信息:</td>
-					<td colspan=2>总人数:</td>
-					<td colspan=2>1</td>
-				</tr>
-				<tr>
-					<td>序号</td>
-					<td>课题负责人</td>
-					<td>科室</td>
-					<td>经费项目编号</td>
-					<td>经费项目名称</td>
-					<td colspan=2>联系电话</td>
-					<td colspan=2>项目负责人：</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>导师1</td>
-					<td>XX科</td>
-					<td><span class="blue">[经费项目编号]</span></td>
-					<td><span class="blue">[经费项目名称]</span></td>
-					<td colspan=2>13XXXXXXXXX</td>
-					<td colspan=2><span class="blue">[经费负责人签字]</span></td>
-				</tr>
-				<tr>
-					<td colspan=2 rowspan=2>科室领导审核：
-						<br>
-						<span class="blue">[经费负责人科室领导签字]</span><br>
-						<br>
-						<br>
-						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
-					</td>
-					<td rowspan=2>设备管理员审核:
-						<br>
-						<span class="blue">[设备管理员签字（我）]</span><br>
-						<br>
-						<br>
-						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
-					</td>
-					<td rowspan=2>共享分平台负责人：
-						<br>
-						<span class="blue">[骨科实验室平台负责人签字<sup>*1</sup>]</span><br>
-						<br>
-						<br>
-						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
-					</td>
-					<td colspan=3 rowspan=2>院、处领导审签：
-						<br>
-						<span class="blue">[西南医院科研科签字<sup>*2</sup>]</span><br>
-						<br>
-						<br>
-						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
-					</td>
-					<td colspan=2>财务审核人：
-						<br>
-						<span class="blue">[西南医院财务<sup>*3</sup>]</span><br>
-						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
-					</td>
-				</tr>
-				<tr>
-					<td colspan=2>经办人：
-						<br>
-						<span class="blue">[报账人签字]</span><br>
-						&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;日
-					</td>
-				</tr>
-				<tr class="no-border">
-					<td colspan=9>
-						填写说明：
-						<ol>
-							<li>必须填写经费项目编号，经费项目名称，经费负责人，科室领导审核；</li>
-							<li>经费项目编号：填写所报经费的相关经费项目编号；</li>
-							<li>经费项目名称：填写所报经费的相关经费项目名称；</li>
-							<li>经费负责人：课题经费复责人签字；</li>
-							<li>科室领导审核：科室领导签字。</li>
-						</ol>
-					</td>
-				</tr>
-				<tr class="no-border">
-					<td colspan=9 style="text-align: center; font-size: 1.1em;">&#38470;&#20891;&#20891;&#21307;大学附属第一医院科研实验项目扣费明细</td>
-				</tr class="no-border">
-				<tr>
-					<td colspan=5>预约使用扣费明细</td>
-					<td colspan=4 style="text-align: right;">总共: 7000元</td>
-				</tr>
-				<tr>
-					<td>序号</td>
-					<td>使用者</td>
-					<td>设备</td>
-					<td>使用开始时间</td>
-					<td>使用结束时间</td>
-					<td>收费时长</td>
-					<td>收费标准</td>
-					<td>实收费</td>
-					<td>付费人</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>研究生1</td>
-					<td>离体锥形微焦CT</td>
-					<td>2021-09-01 09:00</td>
-					<td>2021-09-01 12:00</td>
-					<td>3.00</td>
-					<td>1000/小时</td>
-					<td>3000</td>
-					<td>导师1</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>研究生2</td>
-					<td>离体锥形微焦CT</td>
-					<td>2021-11-10 15:00</td>
-					<td>2021-11-10 19:00</td>
-					<td>4.00</td>
-					<td>1000/小时</td>
-					<td>4000</td>
-					<td>导师1</td>
-				</tr>
-			</table>
-		</div><br>
-		备注：
-		<ol>
-			<li>骨科实验室平台负责人签字：科技楼 3053 室，<i class="fas fa-male"></i><b>窦策</b>。(经常不在，留在这里等签好再拿走即可)</li>
-			<li>西南医院科研科签字：教学楼7楼东侧（靠近外科楼） 科研科办公室１，找 <i class="fas fa-female"></i><b>孙怡</b> 助理初审，再由 <i class="fas fa-male"></i><b>李俊龙</b> 主任签字。<br>
-				若他们不在，可交由7楼西侧（靠近瑜园） 医务处办公室１ 的 <i class="fas fa-female"></i><b>白老师</b> 代办机关签字（过一段时间签好后再去拿）。星期五下午白老师也要开会不在办公室。</li>
-			<li>西南医院财务签字：教学楼8楼东侧，财务大厅，找管科研经费报销的老师会告诉你后面怎么做。</li>
-		</ol>
-	</li>
-	<li><h3>院内记账凭证示例</h3>
-		<div class="paper-sample accounting-documents">
-			<div class="title" style="grid-area: 标题;">记账凭证</div>
-			<div style="grid-area: 填制单位;">填制单位：&#38470;&#20891;&#20891;&#21307;大学第一附属医院</div>
-			<div style="text-align: center; grid-area: 年月日;">2022年02月28日</div>
-			<div style="text-align: right; grid-area: 序号;">第 12345 号</div>
-			<table style="grid-area: 表格;">
-				<thead>
-					<tr>
-						<td style="width: 350px">科 目 名 称</td>
-						<td style="width: 170px">摘 要</td>
-						<td style="width: 30px">借或贷</td>
-						<td style="width: 150px">金 额</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr><td>123JF45-专项经费/XXXX/XXXX</td><td>XX科转骨科共享设备</td><td style="text-align: center;">借</td><td style="text-align: right;">33,300.00</td></tr>
-					<tr><td>678JF10-正常经费/XXX/科研设备共享专户</td><td>XX科转骨科共享设备</td><td style="text-align: center;">贷</td><td style="text-align: right;">33,300.00</td></tr>
-					<tr><td></td><td></td><td></td><td></td></tr>
-					<tr><td></td><td></td><td></td><td></td></tr>
-					<tr><td></td><td></td><td></td><td></td></tr>
-					<tr><td></td><td></td><td></td><td></td></tr>
-					<tr><td></td><td></td><td></td><td></td></tr>
-					<tr><td></td><td></td><td></td><td></td></tr>
-				</tbody>
-			</table>
-			<div style="writing-mode: vertical-lr; text-align: center; word-spacing: 2em; grid-area: 单据张;">附 单 据&nbsp;&nbsp;张</div>
-			<div style="grid-area: 主任;">主任：</div>
-			<div style="grid-area: 复核;">复核：</div>
-			<div style="grid-area: 填制;">填制：</div>
-		</div>
-	</li>
-	<li><h3>外单位付款凭证示例</h3>
-		<div class="paper-sample">
-			<table class="receipt-sample">
-				<tr class="no-border">
-					<td colspan=9 class="title">&#20013;&#22269;&#20154;&#27665;&#35299;&#25918;&#20891;资金往来结算票据</td>
-				</tr>
-				<tr class="no-border">
-					<td colspan=3 style="text-align: right;">(2018):<span style="color:blue">123412341234</span></td>
-				</tr>
-				<tr class="no-border">
-					<td width="250">付款单位：</td>
-					<td width="300" style="text-align: center;">年&nbsp;&nbsp;月&nbsp;&nbsp;日</td>
-					<td width="250">支票号：</td>
-				</tr>
-				<tr style="text-align: center;">
-					<td>项&emsp;目</td>
-					<td>内&emsp;容</td>
-					<td>金&emsp;额</td>
-				</tr>
-				<tr>
-					<td height="200"></td>
-					<td></td>
-					<td></td>
-					<td style="border: none; writing-mode: vertical-lr; text-align: center; width: 42px;">第二联&emsp;付款单位记账<br>不得作为报销凭证</td>
-				</tr>
-				<tr>
-					<td colspan=2>金额合计（大写）：</td>
-					<td></td>
-				</tr>
-				<tr class="no-border">
-					<td>收款单位（盖章）：</td>
-					<td>收款人：</td>
-					<td>交款人：</td>
-				</tr>
-			</table>
-		</div>
 	</li>
 </ul>
 </body>
