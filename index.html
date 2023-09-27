@@ -18,13 +18,22 @@
 	summary>h3 {
 		display: inline;
 	}
+	.remarks {
+		color: orangered;
+	}
+	.remarks::before {
+		content: "(";
+	}
+	.remarks::after {
+		content: ")";
+	}
 </style>
 </head>
 <body>
 <h1>西南医院骨科实验室：</h1>
 <ul>
 	<li>
-		<h2>SkyScan1272 高分辨率三维 X 射线显微镜</h2>
+		<h2>SkyScan1272 高分辨率三维 X 射线显微镜<span class="remarks">离体 CT</span></h2>
 		<img src="images/image.herostageskyscan1272.png" alt="SkyScan1272" width=401 height=205 />
 		<details>
 			<summary><h3>介绍与联系方式</h3></summary>
@@ -84,7 +93,7 @@
 		</details>
 	</li>
 	<li>
-		<h2>Aspect M7 小动物核磁共振成像系统</h2>
+		<h2>Aspect M7 小动物核磁共振成像系统<span class="remarks">活体 核磁</span></h2>
 		<img src="images/M-7_Series-Compact-MRI-Systems-brochure-5.jpg" alt="IVIS Spectrum CT" width=300 height=300 />
 		<details>
 			<summary><h3>介绍与联系方式</h3></summary>
@@ -116,13 +125,13 @@
 <h1 id="in-vivo">其他实验室的断层扫描设备：</h1>
 <ul>
 	<li>
-		<h2>IVIS Spectrum CT 小动物活体成像系统</h2>
+		<h2>IVIS Spectrum CT 小动物活体成像系统<span class="remarks">活体 荧光 CT</span></h2>
 		<img src="images/IVIS-SpectrumCT-Hero.jpg" alt="IVIS Spectrum CT" width=300 height=300 />
 		<details>
 			<summary><h3>介绍与联系方式</h3></summary>
 			<p>
 				IVIS Spectrum CT 是来自美国的 PerkinElmer 公司的一款集光学和 microCT 成像于一体同时具备荧光和生物发光3D断层成像功能的小动物活体成像系统。<br>
-				不过最高像素分辨率只能达到 20μm，对于小鼠分辨率有些低，适合大尺寸的动物。
+				不过默认像素分辨率为 150μm，对于小鼠分辨率有些低，适合大尺寸的动物。
 				<dl>
 					<dt><i class="fa-solid fa-calendar-days"></i> 安装日期</dt>
 					<dd>2021年12月</dd>
@@ -144,7 +153,7 @@
 		</details>
 	</li>
 	<li>
-		<h2>SkyScan1276 高分辨率、快速活体台式micro-CT</h2>
+		<h2>SkyScan1276 高分辨率、快速活体台式micro-CT<span class="remarks">活体 CT</span></h2>
 		<img src="images/image.Skyscan_1276.png" alt="SkyScan1276" width=272 height=205 />
 		<details>
 			<summary><h3>介绍与联系方式</h3></summary>
