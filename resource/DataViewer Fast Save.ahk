@@ -1,10 +1,12 @@
 ﻿#Requires AutoHotkey v2.0
 ; 程序名
 A_ScriptName := "DataViewer 一次保存 4 张图"
+
 ; DataViewer 的窗体类名
 DataViewerClassName := "ahk_class " . "SkyScan DataViewer"
 ; 选择程序保存路径
-ImageDirectory := FileSelect("D", A_InitialWorkingDir)
+;ImageDirectory := Trim("C:\Users\Mapaler\Desktop\1\", "\")
+ImageDirectory := FileSelect("D", A_InitialWorkingDir, "选择保存图片的文件夹")
 if (!DirExist(ImageDirectory)) {
 	MsgBox "您选择的文件夹不存在"
 	ExitApp
@@ -42,7 +44,7 @@ Start(Hwnd, Dir)
 		
 		if (InStr(SWTitle,"Attention")) { ;如果弹出的是警告窗口
 			SetControlDelay 0  ; 可以提高可靠性, 减少副作用.
-			ControlClick(InStr(SWTitle,"!") ? "Button2" : "Button1", SWHwnd) ; 有感叹号的是 屏幕显示 点下第二个按钮（否），否则是旋转警告，点下第一个按钮（是）
+			ControlClick(InStr(SWTitle,"!") ? "Button2" : "Button1", SWHwnd) ; 有感叹号的是 屏幕显示图 点下第二个按钮（否），否则是旋转警告，点下第一个按钮（是）
 			WinWaitClose(SWHwnd) ; 等待警告窗口关闭
 			SWHwnd := WinWait("Save " . subWinClass) ; 等待同进程ID下的 Save 开头的 #32770 窗口
 		}
@@ -52,5 +54,28 @@ Start(Hwnd, Dir)
 		ControlSetText(fileName, "Edit1", SWHwnd) ; 将路径填入文件名内
 		ControlClick("Button2", SWHwnd) ; 点击保存按钮
 		WinWaitClose(SWHwnd) ; 等待保存窗口关闭
+
+		SetTimer CloseColorDeepAlert, 500 ;异步执行
+		PicIndex:= 0
+		windowHwnd := Map()
+		CloseColorDeepAlert() ;关闭16bit->8bit范围压缩确认窗口
+		{
+			OutputDebug ++PicIndex . "异步监听次数`n"
+			if (windowHwnd.Count >= 3 || PicIndex >= 10) {
+				SetTimer , 0  ; 即此处计时器关闭自己.
+				OutputDebug "异步监听结束`n"
+			}
+
+			;if (CDHwnd := WinWait("DataViewer " . subWinClass, , 5)) { ;如果弹出了16bit->8bit范围压缩确认窗口
+			CDHwnd := WinExist("DataViewer " . subWinClass, "Data dynamic range")
+			if (!CDHwnd) { ;如果弹出了16bit->8bit范围压缩确认窗口
+				OutputDebug "确认窗口 " . CDHwnd . " 循环 " . windowHwnd.Has(CDHwnd) . " " . windowHwnd.Count . "`n"
+				return
+			}
+			OutputDebug "检测到 16bit->8bit 范围压缩确认窗口 " . CDHwnd . " " . windowHwnd.Has(CDHwnd) . " " . windowHwnd.Count . "`n"
+			ControlClick("Button1", CDHwnd) ; 点下确认按钮
+			WinWaitClose(CDHwnd) ; 等待保存窗口关闭
+			windowHwnd.Set(CDHwnd, true)
+		}
 	}
 }
