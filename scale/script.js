@@ -1,5 +1,46 @@
 ﻿// JavaScript Document
 var picsa = new Array;
+class PicObj {
+	file = null;
+	img = null;
+	dpix = 0x0b12;
+	dpiy = 0x0b12;
+	canvas = document.createElement("canvas");
+	constructor(file) {
+		this.file = file;
+		const _this = this;
+		file.arrayBuffer().then(buffer=>{
+			const dv = new DataView(buffer);
+			switch (file.type) {
+				case "image/bmp": {
+					_this.dpix = dv.getUint32(0x26,true);
+					_this.dpiy = dv.getUint32(0x2A,true);
+					break;
+				}
+				case "image/png": {
+					_this.dpix = dv.getUint32(0x352);
+					_this.dpiy = dv.getUint32(0x356);
+					break;
+				}
+				case "image/jpeg": {
+					_this.dpix = dv.getUint16(0xe) * 39.37;
+					_this.dpiy = dv.getUint16(0x10) * 39.37;
+					break;
+				}
+			}
+		});
+		this.img = new Image(URL.createObjectURL(file));
+		this.img.onload=function(event){
+			console.log(event);
+			var draw_canvas = thispic.getElementsByClassName("view").item(0).getElementsByClassName("draw-canvas").item(0);
+			draw_canvas.width = picobj.img.width;
+			draw_canvas.height = picobj.img.height;
+			
+			drawview(thispic); //画图
+			picture_info.innerHTML = "图片预览";
+		};
+	}
+}
 function picObj(){ //use factory
 	var obj=new Object();
 	obj.file = null;
@@ -54,6 +95,7 @@ function imagesSelected(myFiles) {
 		picobj.dpiy = dpiy;
 		picobj.img.src = window.URL.createObjectURL(aFile);
 		var thispicindex = picsa.length;
+		// const picobj = new PicObj(aFile);
 		picsa.push(picobj);
 		
 		//复制图像控制栏
@@ -69,7 +111,8 @@ function imagesSelected(myFiles) {
 		convertDpiNum(thispic); //设定图片DPI
 		
 		//图片加载成功时画图
-		picobj.img.onload=function(){
+		picobj.img.onload=function(event){
+			console.log(event);
 			var draw_canvas = thispic.getElementsByClassName("view").item(0).getElementsByClassName("draw-canvas").item(0);
 			draw_canvas.width = picobj.img.width;
 			draw_canvas.height = picobj.img.height;
