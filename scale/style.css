@@ -1,42 +1,18 @@
 ﻿@charset "utf-8";
 /* CSS Document */
 
+body{
+	background:#F0F0F0;
+}
+
 .dialog-panel{
-	position:relative;
-	border:1px solid #D5DFE5;
 	border-radius: 5px;
-	width:400px;
-	margin-top:20px;
-	padding:10px 5px 5px 5px;
-}
-
-.dialog-panel .panel-label{
-	position:absolute;
-	top:-0.8em;
-	left:.8em;
-	padding:0 3px;
-}
-
-.dialog-panel .panel-label.new-feature{
-	top:-1em;
-}
-
-.dialog-panel .panel-label.right{
-	right:.8em;
-	left:auto;
-	font-size:.9em;
 }
 
 .dialog-panel .panel-label.right a{
 	color:#215B9E;
 }
 
-body,select{
-	font-family:"Microsoft Yahei",Arial;
-}
-body{
-	background:#F0F0F0;
-}
 .control,.view{
 	/*
 	border:#aaa 1px solid;
@@ -52,6 +28,7 @@ body{
 }
 .picture{
 	margin-bottom:20px;
+	display: flex;
 }
 .dialog-panel .panel-label,.picture{
 	background-color: #fff;
@@ -59,8 +36,10 @@ body{
 #info{
 	background-color: #D0D0FF;
 }
-.picture:hover,#info:hover{
-	box-shadow:#FFD0D0 0 0 15px;
+.picture:hover,
+#info:hover
+{
+	box-shadow: orange 0 0 5px;
 }
 .control{
 	margin-right:10px;
@@ -80,7 +59,7 @@ body{
 	0px -8px linear-gradient(-45deg, #dfdfdf 25%, transparent 27%),
 	-8px 8px linear-gradient(45deg, transparent 75%, #dfdfdf 75%),
 	8px 0px linear-gradient(-45deg, transparent 75%, #dfdfdf 75%);*/
-	background-image: url(transparent_bg.png);
+	background-image: url(transparent_bg.svg);
 	background-size: 16px 16px;
 	margin-top: 5px;
 }

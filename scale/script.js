@@ -370,3 +370,18 @@ function changeThumbsSize(){
 	csstext += "}";
 	costomCSS.innerHTML = csstext;
 }
+
+window.onload = function(){
+	const body = document.body;
+	body.ondragenter = function(event){
+		event.preventDefault();
+		return false;
+	};
+	body.ondragover = function(event){
+		event.preventDefault();
+		return false;
+	};
+	body.ondrop = function(event){
+		dropIt(event)
+	};
+};
