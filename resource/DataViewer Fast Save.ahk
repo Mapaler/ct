@@ -12,9 +12,19 @@ MsgBox("快捷键：F10`n功能：DataViewer 打开 3D viewing 并激活为当�
 A_TrayMenu.Delete() ;删除所有右键菜单
 ; 选择程序保存路径
 ImageDirectory := ""
+
+OpenSaveDirectory(ItemName, ItemPos, MyMenu)
+{
+	Run("explorer.exe `"" . ImageDirectory . "`"")
+}
+A_TrayMenu.Add("打开图片保存文件夹", OpenSaveDirectory)
+
 ChooseSaveDirectory(ItemName, ItemPos, MyMenu)
 {
-	global ImageDirectory := FileSelect("D", ImageDirectory, "选择保存图片的文件夹")
+	newDirectory := FileSelect("D", ImageDirectory || A_Desktop, "选择保存图片的文件夹")
+	if (DirExist(newDirectory)){
+		global ImageDirectory := newDirectory
+	}
 }
 A_TrayMenu.Add("重新选择图片保存文件夹", ChooseSaveDirectory)
 
