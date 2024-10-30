@@ -1,16 +1,15 @@
 ﻿#Requires AutoHotkey v2.0
 ; 程序名
 A_ScriptName := "DataViewer 一次保存 4 张图 v2.0"
-MsgBox("快捷键：F10`n功能：DataViewer 打开 3D viewing 并激活为当前窗口时，按下快捷键，可以一次保存 3 张方位图片和屏幕显示图片。`n提示：`n如需关闭程序或重新选择保存路径，请使用任务栏托盘按钮的右键菜单。`n如果调整了色彩映射范围，会因为有一个额外的确认框导致保存失败，可以在托盘键菜单里打开“监测并关闭‘色彩映射改变确认’窗口”功能","使用说明",0x20)
-
 DataViewerSystemfolder := RegRead("HKEY_CURRENT_USER\SOFTWARE\SkyScan\DataViewer\Preferences", "System folder", "C:\ProgramFree\SkyScan\DataViewer")
 IconPosition := DataViewerSystemfolder . "\DataViewer.exe"
 if (FileExist(IconPosition)) {
 	TraySetIcon(IconPosition,0)
 }
 
-; DataViewer 的窗体类名
-DataViewerClassName := "ahk_class " . "SkyScan DataViewer"
+MsgBox("快捷键：F10`n功能：DataViewer 打开 3D viewing 并激活为当前窗口时，按下快捷键，可以一次保存 3 张方位图片和屏幕显示图片。`n提示：`n如需关闭程序或重新选择保存路径，请使用任务栏托盘按钮的右键菜单。`n如果调整了色彩映射范围，会因为有一个额外的确认框导致保存失败，可以在托盘键菜单里打开“监测并关闭‘色彩映射改变确认’窗口”功能","使用说明",0x20)
+
+A_TrayMenu.Delete() ;删除所有右键菜单
 ; 选择程序保存路径
 ImageDirectory := ""
 ChooseSaveDirectory(ItemName, ItemPos, MyMenu)
@@ -28,6 +27,12 @@ ChangeShowDataDynamicRangeChange(ItemName, ItemPos, MyMenu)
 }
 A_TrayMenu.Add(DataDynamicRangeChangeMenuName, ChangeShowDataDynamicRangeChange)
 
+CloseScript(ItemName, ItemPos, MyMenu)
+{
+	ExitApp
+}
+A_TrayMenu.Add("退出脚本", CloseScript)
+
 ;第一次使用脚本需要先选择文件夹
 ChooseSaveDirectory("","","") 
 if (!DirExist(ImageDirectory)) {
@@ -35,6 +40,8 @@ if (!DirExist(ImageDirectory)) {
 	ExitApp
 }
 
+; DataViewer 的窗体类名
+DataViewerClassName := "ahk_class " . "SkyScan DataViewer"
 ; 指定必须 DataViewer 窗口在前台时才起作用
 #HotIf WinActive(DataViewerClassName)
 F10:: ; F10 快捷键启动
