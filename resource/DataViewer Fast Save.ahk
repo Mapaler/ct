@@ -1,13 +1,16 @@
 ﻿#Requires AutoHotkey v2.0
 ; 程序名
-A_ScriptName := "DataViewer 一次保存 4 张图 v2.0"
-DataViewerSystemfolder := RegRead("HKEY_CURRENT_USER\SOFTWARE\SkyScan\DataViewer\Preferences", "System folder", "C:\ProgramFree\SkyScan\DataViewer")
-IconPosition := DataViewerSystemfolder . "\DataViewer.exe"
-if (FileExist(IconPosition)) {
-	TraySetIcon(IconPosition,0)
-}
+A_ScriptName := "DataViewer 一次保存 4 张图 v2.0.1"
+;DataViewerSystemfolder := RegRead("HKEY_CURRENT_USER\SOFTWARE\SkyScan\DataViewer\Preferences", "System folder", "C:\ProgramFree\SkyScan\DataViewer")
+; IconPosition := DataViewerSystemfolder . "\DataViewer.exe"
+;if (FileExist(IconPosition)) {
+;	TraySetIcon(IconPosition,0)
+;}
+TraySetIcon("imageres.dll",289)
+A_IconTip := A_ScriptName
+helpText := "快捷键：F10`n功能：DataViewer 打开 3D viewing 并激活为当前窗口时，按下快捷键，可以一次保存 3 张方位图片和屏幕显示图片。`n提示：`n1.请选择纯英文路径（要有非 ASCii 字符）`n2.如需关闭程序或重新选择保存路径，请使用任务栏托盘按钮的右键菜单。`n3.如果调整了色彩映射范围，会因为有一个额外的确认框导致保存失败，可以在托盘键菜单里打开“监测并关闭‘色彩映射改变确认’窗口”功能"
 
-MsgBox("快捷键：F10`n功能：DataViewer 打开 3D viewing 并激活为当前窗口时，按下快捷键，可以一次保存 3 张方位图片和屏幕显示图片。`n提示：`n如需关闭程序或重新选择保存路径，请使用任务栏托盘按钮的右键菜单。`n如果调整了色彩映射范围，会因为有一个额外的确认框导致保存失败，可以在托盘键菜单里打开“监测并关闭‘色彩映射改变确认’窗口”功能","使用说明",0x20)
+ShowHelp("","","") 
 
 A_TrayMenu.Delete() ;删除所有右键菜单
 ; 选择程序保存路径
@@ -17,7 +20,8 @@ OpenSaveDirectory(ItemName, ItemPos, MyMenu)
 {
 	Run("explorer.exe `"" . ImageDirectory . "`"")
 }
-A_TrayMenu.Add("打开图片保存文件夹", OpenSaveDirectory)
+A_TrayMenu.Add("打开当前的图片保存文件夹", OpenSaveDirectory)
+A_TrayMenu.SetIcon("打开当前的图片保存文件夹", "imageres.dll", 109)
 
 ChooseSaveDirectory(ItemName, ItemPos, MyMenu)
 {
@@ -27,6 +31,7 @@ ChooseSaveDirectory(ItemName, ItemPos, MyMenu)
 	}
 }
 A_TrayMenu.Add("重新选择图片保存文件夹", ChooseSaveDirectory)
+A_TrayMenu.SetIcon("重新选择图片保存文件夹", "imageres.dll", 229)
 
 DataDynamicRangeChangeMenuName := "监测并关闭“色彩映射改变确认”窗口"
 WillShowDataDynamicRangeChange := false
@@ -35,13 +40,24 @@ ChangeShowDataDynamicRangeChange(ItemName, ItemPos, MyMenu)
 	global WillShowDataDynamicRangeChange := !WillShowDataDynamicRangeChange
 	WillShowDataDynamicRangeChange ? A_TrayMenu.Check(DataDynamicRangeChangeMenuName) : A_TrayMenu.Uncheck(DataDynamicRangeChangeMenuName)
 }
+
+A_TrayMenu.Add()
 A_TrayMenu.Add(DataDynamicRangeChangeMenuName, ChangeShowDataDynamicRangeChange)
+A_TrayMenu.Add()
+
+ShowHelp(ItemName, ItemPos, MyMenu)
+{
+	MsgBox(helpText,"使用说明",0x20)
+}
+A_TrayMenu.Add("再次显示启动时的帮助", ShowHelp)
+A_TrayMenu.SetIcon("再次显示启动时的帮助", "imageres.dll", 95)
 
 CloseScript(ItemName, ItemPos, MyMenu)
 {
 	ExitApp
 }
 A_TrayMenu.Add("退出脚本", CloseScript)
+A_TrayMenu.SetIcon("退出脚本", "imageres.dll", 236)
 
 ;第一次使用脚本需要先选择文件夹
 ChooseSaveDirectory("","","") 
