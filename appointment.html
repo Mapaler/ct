@@ -124,6 +124,9 @@
 	{
 		display: inline;
 	}
+	details:not([open]) summary::before {
+		content: "[展开]";
+	}
 </style>
 </head>
 <body>
@@ -135,57 +138,93 @@
 	<summary><h2>注册西南医院仪器共享平台</h2></summary>
 	<ul>
 		<li>
-			<span class="blue"><i class="fab fa-internet-explorer"></i>浏览器</span>访问西南医院仪器共享平台，<a href="http://192.168.48.91/">西南医院内网</a>/<a href="http://openlab.xnyy.cn">互联网</a><br>
-			目前内网系统版本为v4.11，互联网系统版本为2025年才更新的v6.0，互联网功能还不全，暂未迁移完毕，所以以下介绍暂时无法完全更新到新版本。
+			<span class="blue"><i class="fab fa-internet-explorer"></i>浏览器</span>访问西南医院仪器共享平台，<a href="http://openlab.xnyy.cn">互联网地址</a>
 		</li>
-		<li>右上角注册你的平台帐号。<br><img src="images/appointment/注册按钮.png"></li>
-		<li>注意导师课题组在本平台没有账号的，需要先以导师名义注册。因为学生账号费用只能挂靠到课题组名下，没有导师帐号无法直接建学生账号。（不知道有没有的话我可以在系统里查询）<br>
-			有导师帐号后，仍建议让学生自建账号。直接使用导师账号无法管理不同学生的花费，如果发生违规扣分也会累计到一个账号上。</li>
+		<li>右上角注册你的平台帐号。<br><img src="images/appointment/注册按钮.webp"></li>
 		<li>
-			西南医院选择<strong>院内注册</strong>，学校或其他医院选择<strong>院外注册</strong>。<br>
-			申请人单位机构处，西南医院内选择具体科室，学校和其他附属医院只有单位整体一项可选。<br>
-			<img src="images/appointment/注册身份选择-v4.webp">
+			有导师帐号后，仍建议让学生自建账号。<br>
+			直接使用导师账号无法识别不同学生的花费，如果发生违规扣分也会累计到一个账号上。</li>
+		<li>
+			<strong>西南医院</strong>选择<strong>院内注册</strong>，<strong>学校</strong>或<strong>其他医院</strong>选择<strong>院外注册</strong>。<br>
+			<img src="images/appointment/注册信息-1.webp">
 		</li>
-		<li>这样注册导师账号后暂时只有游客访问权限，需要进一步开通预约设备权限。</li>
+		<li>
+			申请人单位机构处，<strong>西南医院</strong>内选择具体科室，<strong>学校</strong>或<strong>其他医院</strong>只有单位整体一项可选。<br>
+			在此处选择对应的导师，导师课题组在本平台没有账号的，需要先以导师名义注册。学生账号费用只能挂靠到课题组名下，没有导师帐号无法直接建学生账号。<br>
+			有导师帐号后，仍应当让学生自建账号。直接使用导师账号无法识别不同学生的花费，如果发生违规扣分也会累计到一个账号上。
+			<img src="images/appointment/注册信息-2.webp">
+		</li>
+		<li>
+			注册导师账号时，在附件上传任务书等<i class="fas fa-search-dollar"></i><strong>科研资金来源证明</strong>的 PDF 文件，并等待平台管理员人工审核。<br>
+			<img src="images/appointment/注册信息-3.webp">
+		</li> 
 	</ul>
 </details>
 <details>
-	<summary><h2>开通账号预约设备权限(平台审核资金资质)</h2></summary>
+	<summary><h2>开通账号预约设备权限</h2>(导师审核)</summary>
 	<ul>
-		<li>点击我的账号，进入个人中心<br>
-		<img src="images/appointment/我的帐号.png"></li>
-		<li>未审核账号会提示打印申请表，将其下载修改后打印。<br>
-			<img src="images/appointment/下载申请表.png"></li>
-		<li>导师帐号需要附上<i class="fas fa-search-dollar"></i>科研资金出处证明（非西南医院导师要求提供在研项目任务书等）；学生账号直接挂靠导师账号即可。</li>
-		<li>到西南医院科技中心中心实验室大玻璃门内，左转楼梯上 2楼 找 2011 结算室<b><i class="fas fa-female"></i>张倩</b>（负责院内）或 1楼 电梯旁通道 1029 助理研究员办公室 <b><i class="fas fa-male"></i>杨永军</b>（负责院外）<i class="fas fa-user-check"></i>审核。</li>
 		<li><i class="fas fa-user-check"></i>审核通过后账户才可预约使用仪器。</li>
-		<li>之后的预约操作在<span class="blue"><i class="fab fa-internet-explorer"></i>网页版</span>上进行。</li>
+		<li>
+			注册学生账号后，进入工作台。未审核账号会提示需要等待审核。<br>
+			<img src="images/appointment/账号审核-等待审核.webp">
+		</li>
+		<li>
+			登录导师账号，进入工作台-课题组-用户注册审核，审核学生账号。<br>
+			<img src="images/appointment/账号审核-导师审核.webp">
+		</li>
+		<li>
+			如果账号的审核被拒绝，会提示未通过。<br>
+			<img src="images/appointment/账号审核-未通过.webp"><br>
+			请检查<strong>拒绝/禁止理由</strong><br>
+			<img src="images/appointment/账号审核-拒绝理由.webp">
+		</li>
+		<li>如果需要找具体的负责人询问，西南医院科技中心中心实验室大玻璃门内，左转楼梯上 2楼 找 2011 结算室 <strong><i class="fas fa-female"></i>张倩</strong>（负责院内）或 1楼 电梯旁通道 1029 助理研究员办公室 <strong><i class="fas fa-male"></i>杨永军</strong>（负责院外）。</li>
+		<li>
+			之后的预约操作可以在<span class="blue"><i class="fab fa-internet-explorer"></i>网页版</span>和<span class="green"><i class="fa-brands fa-weixin"></i>微信公众号</span>上进行。
+			具体用法请查看<a href="http://openlab.xnyy.cn/Portal/Article/Show/904a4706-7989-462e-bd33-46d378a77283?ArticleCategoryId=7c0ee348-404e-42c8-aecf-46d13c9f5cd2"><i class="fa-solid fa-bullhorn"></i>公告</a>。
+		</li>
+		<li>因为我觉得<span class="green"><i class="fa-brands fa-weixin"></i>微信公众号</span>不好用，所以后面都以<span class="blue"><i class="fab fa-internet-explorer"></i>网页版</span>教程为主。</li>
 	</ul>
 </details>
 <details>
-	<summary><h2>申请具体设备使用权限(具体设备管理员审核)</h2></summary>
+	<summary><h2>申请设备使用权限</h2>(具体设备管理员审核)</summary>
 	<ul>
-		<li>预约仪器前需先向设备管理员申请该设备的“使用设备权限”。</li>
-		<li>在<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span>找到“离体锥形微焦CT (SKYSCAN1272)”。<br>
-			<img src="images/appointment/搜索仪器.png">
-		<li>点击“申请”按钮申请使用。</li>
-			<img src="images/appointment/申请使用权限.png"></li>
-		<li>等待设备管理员（就是我）审核通过后，便可预约使用时间了。</li>
+		<li>预约 A 类仪器前，需先向设备管理员申请该设备的“使用设备权限”。</li>
+		<li>在平台上找到“离体锥形微焦CT”。<br>
+			<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span>可以搜索型号“1272”比较简单。<br>
+			<img src="images/appointment/搜索仪器-网页.webp"><br>
+			<span class="green"><i class="fa-brands fa-weixin"></i>微信公众号</span>可以搜索名称“CT”比较简单。<br>
+			<img src="images/appointment/搜索仪器-微信.webp"><br>
+		</li>
+		<li>
+			点击“申请使用”按钮。<br>
+			<img src="images/appointment/使用设备权限-网页.webp">
+		</li>
+		<li>等待设备管理员（就是我）审核通过后，便可预约使用时间了。（可以主动给我发消息。）</li>
 	</ul>
 </details>
 <details>
 	<summary><h2>预约使用时间</h2></summary>
 	<ul>
-		<li>本离体型显微CT对装样有一定要求，可参考<a href="LOAD.html">装样示例</a>。</li>
-		<li>不熟悉的，请先联系我<i class="fas fa-comments"></i>讨论。</li>
-		<li>具体预约时间也需要讨论后再去申请。</li>
-		<li>在<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span>预约使用时间。<br>
-			<img src="images/appointment/网页预约.png"></li>
+		<li>本离体型显微 CT 对装样有一定要求，可参考<a href="LOAD.html">装样示例</a>。</li>
+		<li>不熟悉的，请先联系我<i class="fas fa-comments"></i>讨论。具体预约时间也需要讨论后再去申请。</li>
+		<li>
+			建议使用<span class="blue"><i class="fab fa-internet-explorer"></i>网页</span>预约使用时间。<br>
+			<img src="images/appointment/预约时间-网页.webp">
+		</li>
 	</ul>
 </details>
 <details>
 	<summary><h2>上机计时</h2></summary>
-	目前只能由管理员手动计费
+	<ul>
+		<li>
+			到现场需要具有<span class="blue"><i class="fa-brands fa-bluetooth"></i>蓝牙</span>功能的手机，用已关联平台账号的<span class="green"><i class="fa-brands fa-weixin"></i>微信</span>扫码上机，上机即开始计时。<br>
+			也可以由管理员后期手动计时。
+		</li>
+		<li>手动换样时，可以优化装样形式以减少开关门次数，不盲目追求高分辨率，都可以有效减少扫描时间。</li>
+		<li>如果样品尺寸符合要求，本仪器有 16个位置 的自动换样器(Sample Changer)，使用自动换样器可以减少人员时刻值守手动换样的劳累，但设备移动缓慢，会增加换样用时（每次换样约5分钟）。</li>
+		<li>使用完毕，请及时下机。</li>
+	</ul>
 </details>
 <h1 id="final-estimate">费用结算</h1>
 <ul>
@@ -429,9 +468,9 @@
 			</li>
 		</ul>
 	</li>
-	<li><span class="red"><i class="fa-solid fa-triangle-exclamation"></i>重要：</span>因为财务与共享平台并未对接，我也没有核销权限，需要带付款凭证找平台管理员<strong><i class="fas fa-male"></i>杨永军</strong>(<i class="fas fa-envelope"></i>20050134145@163.com/<i class="fas fa-phone"></i>17783034529)进行共享平台核销，如下图。<br>
-		若不进行核销，系统里这笔钱将永远是未确认状态，会导致账号因为欠费不能预约后续的实验。<br>
-		<img src="images/appointment/结算后核销.png"><br>
+	<li>
+		<span class="red"><i class="fa-solid fa-triangle-exclamation"></i>重要：</span>因为财务与共享平台并未对接，我也没有核销权限，需要带付款凭证找平台管理员<strong><i class="fas fa-male"></i>杨永军</strong>(<i class="fas fa-envelope"></i>20050134145@163.com/<i class="fas fa-phone"></i>17783034529)进行共享平台核销。<br>
+		若不进行核销，系统里这笔钱将永远是未确认状态，会导致账号因为欠费不能预约后续的实验。
 	</li>
 </ul>
 </body>
