@@ -21,6 +21,50 @@
 	.ct-pic img{
 		max-width: 400px;
 	}
+	table thead:first-child {
+		position: sticky;
+		top: 0;
+		background-color: #f1f1f1;
+	}
+
+	#figure {
+		display: flex;           /* 横向排列 */
+		gap: 20px;              /* 左右间距 */
+		align-items: stretch;   /* 让两者高度一致 */
+		width: 100%;
+	}
+
+	/* 左侧：iframe 容器 */
+	.iframe-wrapper {
+		flex: 1;               /* 占 1/2 宽度，可调整 */
+		min-width: 0;          /* 防止溢出 */
+		position: relative;
+	}
+
+	.iframe-wrapper iframe {
+		width: 100%;
+		height: 100%;          /* 继承父容器高度 */
+		border: 1px solid #ccc;
+		display: block;
+	}
+
+	/* 右侧：SVG 容器 */
+	.svg-wrapper {
+		flex: 1;               /* 占 1/2 宽度 */
+		min-width: 0;
+		display: flex;
+		align-items: center;   /* 垂直居中 */
+		justify-content: center;
+		background: #f9f9f9;   /* 可选，方便看到边界 */
+		border: 1px solid #eee;
+	}
+
+	.svg-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;   /* 保持比例，不裁剪 */
+		display: block;
+	}
 </style>
 </head>
 <body>
@@ -32,24 +76,26 @@
 <p>
 	活体构型指像人类医疗 CT 一样，动物固定在槽里，光源和相机在外侧旋转。离体构型指光源和相机固定不动，样品在中间旋转。<br>
 	因为目前 微焦X射线光源 和 闪烁体X光相机（含CCD/CMOS两种） 国产化比较差，都还是进口，所以各厂家相同生态位设备的空间分辨率都差不多。比拼的是上层的硬件组装设计、功能开发和软件设计。
-	国产目前的软件优势是都接入了 AI 快速识别绘制 ROI 功能，但是我还没体验过。
+	国产目前的软件优势是接入了 AI 快速识别绘制 ROI 功能，但是我还没体验过，可能只是厂家吹嘘厉害。布鲁克的 CTAn 的固定程序算法还是比较保险的，我们因为已经有了一套布鲁克的软件，所以国产软件分析能力对于我们并不是非常重要。
 </p>
 <p>
 	除了3个国外传统牌子是通过产品了解的，我主要是通过搜索引擎搜索国产CT网站，因此并不能包含所有企业。<br>
 	网站做的很差的，了解不到信息，直接略过；有的核心主营是工业CT，或者生命科学只是附带可以扫离体样本而没有真实应用，我买来用就会遇到很多厂家没考虑到的问题，所以也略过。<br>
-  目前是按我知道他们品牌的先后顺序排序。
+	目前是按我知道他们品牌的先后顺序排序。
 </p>
 <table border="1">
 	<thead>
-		<tr>
-			<td colspan="5"><h4>进口 CT</h4></td>
-		</tr>
 		<tr>
 			<td>品牌</td>
 			<td>属地</td>
 			<td>个人介绍</td>
 			<td>换样器</td>
 			<td>网站</td>
+		</tr>
+	</thead>
+	<thead>
+		<tr>
+			<td colspan="5"><h4>进口 CT</h4></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -109,7 +155,7 @@
 				目前型号里，离体构型的 µCT 100 看起来最好，有换样器；活体构型的 vivaCT 80 参数上空间分辨率有点低。跟厂家联系后告诉我，他们是标的扫活体动物的空间分辨率，其他厂商都是用很小的离体样本扫的分辨率。此话确实为真，但是 vivaCT 80 扫离体小样本的能力如何无法评估。<br>
 				数据可以导出dicom，之前我们机器坏了，学生去大坪扫了拿到我这里用SkyScan的软件分析。看到各种论文里用的挺多的，3D图片以表面渲染为主，但是具体的软件我没见过。<br>
 				国内代理通过其他同事转给我彩页和参数，虽然参数还行，但是彩页做的不好看。后来领导想买活体构型的，就没有继续交流了。<br>
-        我看到他们的彩页上说支持有限元分析：软件与设备整合一体，模拟真实力学测试，以非破坏性方式分析样品的生物力学特性，一次性获得多次力学测试才能得到的结果。如果这个功能内置了的话，就不需要去专门搜索研究怎么做了，会方便很多。
+				我看到他们的彩页上说支持有限元分析：软件与设备整合一体，模拟真实力学测试，以非破坏性方式分析样品的生物力学特性，一次性获得多次力学测试才能得到的结果。如果这个功能内置了的话，就不需要去专门搜索研究怎么做了，会方便很多。
 			</td>
 			<td>✅</td>
 			<td><a href="https://www.scanco.ch/">原厂</a><br><a href="https://www.szfront.cn/scanco-ct.html">国内指定代理</a></td>
@@ -131,13 +177,6 @@
 		<tr>
 			<td colspan="5"><h4>国产 CT</h4></td>
 		</tr>
-		<tr>
-			<td>品牌</td>
-			<td>属地</td>
-			<td>个人介绍</td>
-			<td>换样器</td>
-			<td>网站</td>
-		</tr>
 	</thead>
 	<tbody>
 		<tr>
@@ -145,10 +184,12 @@
 			<td>天津</td>
 			<td>
 				几年前在 B 站搜 CT 视频教程看过他们的<a href="https://www.bilibili.com/video/BV19u411673P/">教学视频</a>，我觉得讲的很好就收藏了，但是当时他们还是主要做离体构型的工业 CT，现在也卖小动物 CT 了。<br>
-				目前型号里离体型应该是 nanoVoxel-1000大小合适，标称分辨率大约是1272；活体型是 Pixon-2000。据销售说已经量产换样器，可以根据机器进行定制，给我看了一个实物图但暂时没有公开的展示图。早期和国外 DrangonFly 软件合作，现在也有了自己的分析软件，具体的使用和软件还没了解过。<br>
-				我觉得他们是国产 CT 里网站展示做的最好的，比较清晰美观。
+				目前型号里离体型应该是 nanoVoxel-1000 大小合适，标称分辨率大约是 1272，但是没有样品台垂直移动，所以便利性上不如 1272；活体型是 Pixon-2000。据销售说已经量产换样器，可以根据机器进行定制，给我看了一个实物图但暂时没有公开的展示图。<br>
+				nanoVoxel-2000 以上支持物镜耦合探测器，空间分辨率能达到0.5μm，已经是 SkyScan 2214 的水平了。
+				早期和国外 DrangonFly 软件合作，现在也有了自己的分析软件，具体的使用和软件还没了解过。<br>
+				我觉得他们是国产 CT 里目前网站展示做的最好的，比较清晰美观。
 			</td>
-			<td>✅</td>
+			<td>✅<br>定制</td>
 			<td><a href="https://www.sypi.com/list/360.html">原厂</a></td>
 		</tr>
 		<tr>
@@ -180,10 +221,11 @@
 			<td>上海</td>
 			<td>
 				是厂家主动联系我的，类似三英，也是工业CT厂家进入生命科学领域。很工程师思维，销售给我讲的都是各种参数，彩页和官网的各种参数都给非常详细，看起来不错。<br>
-				目前型号里离体型，桌面型的 AX-1000CT大小合适，标称和SkyScan 1272差不多，也可以加钱进一步提升空间分辨率，立柜式的 AX-2000CT 体积有些大了，据销售说可以定制换样器，我暂时没有见过展示图；活体型是 Pixon-2000，参数看起来和 1276 差不多。
-				官网页面写的使用的 InstaRecon®分层重建算法，这个布鲁克前几年也用过，但是后来合作终止了，布鲁克换成了自己的 NRecon 2.0 软件。
+				目前型号里离体型，桌面型的 AX-1000CT大小合适，标称和SkyScan 1272差不多，也可以加钱进一步提升空间分辨率，立柜式的 AX-2000CT 体积有些大了，据销售说可以定制换样器，我暂时没有见过展示图；活体型是 Pixon-2000，参数看起来和 1276 差不多。<br>
+				官网页面写的使用的 InstaRecon®分层重建算法，这个布鲁克前几年也用过，但是后来合作终止了，布鲁克换成了自己的 NRecon 2.0 软件。<br>
+				官网页面数据详细程度比三英都更高。
 			</td>
-			<td>✅</td>
+			<td>✅<br>定制</td>
 			<td><a href="https://www.always.ltd/ProductInfoCategory?categoryId=1042963&PageInfoId=0">原厂</a></td>
 		</tr>
 	</tbody>
@@ -191,252 +233,25 @@
 <h3>为什么我关注自动换样器</h3>
 <p>目前所有的自动换样器都是给离体构型设计的，也就是主要做工业流水线样本的。</p>
 <p>我科 2014 年和 SkyScan 1272 一起买的换样器，初期实验量不多，加上第一款换样器在设计上有一些缺点，所以前几年没使用。2022 年科里研究生变多了，大家为了自己的论文水平，做的试验样品也比较多，一下子就有了很多扫描需求。人工扫描很短的时间就要换一次样，人需要一直守在这里，就会占用很多时间。于是我重新开始启用换样器（通过一些变通方法来规避缺点）。为此我还研究了怎么低成本批量打标签：<a href="https://www.bilibili.com/video/BV1NauhzNEEn/">用普通打印机打印平板标签纸教学录像</a></p>
-<table border=0 cellpadding=0 cellspacing=0 width=496 style='display:inline-block;border-collapse:
- collapse;table-layout:fixed;width:373pt'>
- <col width=82 style='mso-width-source:userset;mso-width-alt:2624;width:62pt'>
- <col width=141 style='mso-width-source:userset;mso-width-alt:4512;width:106pt'>
- <col width=273 style='mso-width-source:userset;mso-width-alt:8736;width:205pt'>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl1515841 width=82 style='height:13.5pt;width:62pt;
-  font-size:11.0pt;color:black;font-weight:700;text-decoration:none;text-underline-style:
-  none;text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none;background:#DDEBF7;mso-pattern:#DDEBF7 none'>行标签</td>
-  <td class=xl1515841 width=141 style='width:106pt;font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none;
-  background:#DDEBF7;mso-pattern:#DDEBF7 none'>求和项:持续时间</td>
-  <td class=xl1515841 width=173 style='width:205pt;font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none;
-  background:#DDEBF7;mso-pattern:#DDEBF7 none'>计数项:扫描名<br />
-    <br />
-    Filename Prefix</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2014年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>7:32:20</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>19</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2015年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>148:03:51</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>450</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2016年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>140:56:04</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>367</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2017年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>503:30:57</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>832</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2018年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>374:36:32</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>769</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2019年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>297:50:40</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>925</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2020年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>772:24:54</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>1978</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2021年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>667:40:09</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>1479</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2022年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>1018:09:40</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>2336</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2023年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>2308:43:26</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>4735</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2024年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>4521:08:58</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>5737</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2025年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>1341:11:14</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>3578</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;
-  border-left:none'>2026年</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>969:21:28</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:none;
-  border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none'>3076</td>
- </tr>
- <tr height=18 style='height:13.5pt'>
-  <td height=18 class=xl6615841 style='height:13.5pt;font-size:11.0pt;
-  color:black;font-weight:700;text-decoration:none;text-underline-style:none;
-  text-line-through:none;font-family:宋体, sans-serif;mso-font-charset:134;
-  border-top:.5pt solid #9BC2E6;border-right:none;border-bottom:none;
-  border-left:none;background:#DDEBF7;mso-pattern:#DDEBF7 none'>总计</td>
-  <td class=xl6515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:.5pt solid #9BC2E6;
-  border-right:none;border-bottom:none;border-left:none;background:#DDEBF7;
-  mso-pattern:#DDEBF7 none'>13071:10:13</td>
-  <td class=xl1515841 align=right style='font-size:11.0pt;color:black;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:宋体, sans-serif;mso-font-charset:134;border-top:.5pt solid #9BC2E6;
-  border-right:none;border-bottom:none;border-left:none;background:#DDEBF7;
-  mso-pattern:#DDEBF7 none'>26281</td>
- </tr>
-</table>
-<img src="images/CT-Collection/CT使用时间走势.svg" width="522" height="368" alt="CT使用时间走势折线图">
+<div id="figure">
+	<!-- 左侧：表格 -->
+	<div class="iframe-wrapper">
+		<iframe src="Micro-CT使用时间走势.html" title="使用时间走势"></iframe>
+	</div>
+
+	<!-- 右侧：SVG 图 -->
+	<div class="svg-wrapper">
+		<img src="images/CT-Collection/CT使用时间走势.svg" alt="CT使用时间走势折线图">
+	</div>
+</div>
 <p>
 	所以从我自己统计的使用量趋势可以看到，2023、2024年，使用量直接爆表，2024 年扫描净时间都有4500+小时，每次换样间隔时间都至少 5 分钟，还有额外的备样、调试用时，所以全年 CT 工作量肯定是超过 5000 小时的（一年 365 天只有 8760 个小时）。当时设备的相机还是 CCD，这也导致了很快把设备寿命干废了，第二年设备就因为坏了半年没有使用，趋势就掉下来了。我们是生命科学，扫的都是不同小鼠的离体骨头，都可以做出这个使用量，更不用说工厂的流水线了。使用者也需要注意维护保养，好好开空调、除湿机，另外买能够覆盖硬件损坏的维保。
 </p>
 <p>
-	布鲁克的外置换样器目前应该是有专利，其他厂家做的都是舱内设计。这些桌面 CT 都是自屏蔽的，所以 CT 工作时人可以待在旁边，所以如果是外置换样器，必须结合电控开关门设计，内置的只需要做在舱内就行了。<br>
+	布鲁克的外置换样器目前可能是有专利，其他厂家做的都是舱内设计。这些桌面 CT 都是自屏蔽的，所以 CT 工作时人可以待在旁边，所以如果是外置换样器，必须结合电控开关门设计，内置的只需要做在舱内就行了。<br>
 	外置的优势是，除了换样过程中，其他任何时间都可以上样，只要转盘上有样本，就可以无限工作下去。比如你放了 16 个样本，晚上 10 点你要赶车之前来查看，已经扫了 8 个，现在第 9 个扫了一半，你不用停止 CT，只需要把转盘上扫完的 8 个换成新的，就可以走了，第二天来转盘上是 16 个扫完的样本。而舱内设计需要停止当前扫描（不然有辐射），打开舱门，更换扫完的样本后，重新开始扫描。<br>
 	布鲁克的外置式设计目前看起来最好用，国产的虽然因为专利限制无法做成舱外，但便宜很多。
 </p>
-<p>更新于2026年6月16日</p>
+<p>更新于2026年6月25日</p>
 </body>
 </html>
