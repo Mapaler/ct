@@ -5,6 +5,9 @@
 <title>小动物显微 CT 厂家收集</title>
 <link href="css/all.css" rel="stylesheet" type="text/css">
 <style type="text/css">
+	:root {
+		--excellent-color: #e0ffe0;
+	}
 	.display-none
 	{
 		display: none;
@@ -18,13 +21,19 @@
 	summary>h3 {
 		display: inline;
 	}
-	.ct-pic img{
+	#ct-pic img{
 		max-width: 400px;
+	}
+	#ct-pic tr>td:nth-of-type(2){
+		width: 200px;
 	}
 	table thead:first-child {
 		position: sticky;
 		top: 0;
 		background-color: #f1f1f1;
+	}
+	tr.excellent {
+		background-color: var(--excellent-color);
 	}
 
 	#figure {
@@ -34,11 +43,12 @@
 		width: 100%;
 	}
 
-	/* 左侧：iframe 容器 */
-	.iframe-wrapper {
+	.iframe-wrapper,
+	.svg-wrapper {
+		display: flex;
 		flex: 1;               /* 占 1/2 宽度，可调整 */
-		min-width: 0;          /* 防止溢出 */
-		position: relative;
+		flex-direction: column;  /* 让图像在上，图注在下 */
+		align-items: center;     /* 可选居中 */
 	}
 
 	.iframe-wrapper iframe {
@@ -48,22 +58,21 @@
 		display: block;
 	}
 
-	/* 右侧：SVG 容器 */
-	.svg-wrapper {
-		flex: 1;               /* 占 1/2 宽度 */
-		min-width: 0;
-		display: flex;
-		align-items: center;   /* 垂直居中 */
-		justify-content: center;
-		background: #f9f9f9;   /* 可选，方便看到边界 */
-		border: 1px solid #eee;
-	}
-
 	.svg-wrapper img {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;   /* 保持比例，不裁剪 */
 		display: block;
+	}
+
+	.空间分辨率 {
+		background-color: #f0f0f0;
+		padding: 2px 4px;
+		border-radius: 4px;
+	}
+	.空间分辨率::after {
+		content: " @ 10% MTF";
+		font-size: 0.8em;
 	}
 </style>
 </head>
@@ -73,14 +82,32 @@
 <p>
 	个人介绍是我个人的主观意见，仅供参考。<br>
 	我科买 CT 时调研过的厂家，方便其他想买 CT 的同僚查看。方向是骨科/生工科研，不包括宠物那种 CT，小鼠离体部位标本为主（股骨最多），少量大鼠离体标本。<br>
-	没有收任何广告费，但是肯定会存在个人的喜好倾向。
+	没有收任何广告费，但是毕竟我只用过布鲁克的机器肯定会存在个人的喜好倾向。
 </p>
 <ul>
 	<li><strong>活体构型</strong>，指像人类医疗 CT 一样，动物固定在槽里，光源和相机在外侧旋转。</li>
 	<li><strong>离体构型</strong>，指光源和相机固定不动，样品在中间旋转。</li>
 </ul>
 <p>
-	因为目前 微焦 X 射线光源 和 闪烁体 X 光相机（含 CCD/CMOS 两种） 国产化比较差，都还是进口，所以各厂家相同生态位设备的空间分辨率都差不多。比拼的是上层的硬件组装设计、功能开发和软件设计。<br>
+	活体构型因为需要外部光学主结构旋转，振动比离体构型大，因此极限空间分辨率难以做小。如果是扫活体样本，因为动物尺寸有那么大，几何放大倍率就不够，必定导致空间分辨率也做不高，比如 SCANCO 称的能做到 <span class="空间分辨率">14μm</span> 就算不错的了。<br>
+	我科下一步是需要往骨陷窝等骨细胞级微观结构方向进行研究，布鲁克的 X4 POSEIDON 彩页里我看到了骨陷窝的展示图像，也找厂家要来了原始数据验证。X4 POSEIDON 扫离体小样本的空间分辨率能做到 <span class="空间分辨率">2μm</span>，所以我科下一步的 CT 采购目标是离体构型。
+</p>
+<p>
+	因为目前 闭管微焦 X 射线光源 和 闪烁体 X 光相机（含 CCD/CMOS 两种） 国产化比较差，都还是进口，所以各厂家相同生态位设备的空间分辨率都差不多。比拼的是上层的硬件组装设计、功能开发和软件设计。<br>
+	国产设备很多厂家宣传的空间分辨率往往是 2D JIMA 卡的分辨率，这个只需要光源和相机的参数够高就能实现，反映的是设备的理论极限分辨率，真正能反映一个厂商的综合能力的是用 QRM 模体扫描、重建后所得断层图像的实测证明 3D 空间分辨率，如果机械旋转震动大或者重构算法差都会导致 3D 空间分辨率下降。<br>
+	<figure>
+		<img width="500" src="images/CT-Collection/JIMA-QRM.webp" alt="布鲁克空间分辨率展示图像">
+		<figcaption>图1：布鲁克公开的彩页里的空间分辨率的展示图像（同时包含 2D 和 3D）</figcaption>
+	</figure>
+	同时还可以从设备的硬件设计上去验证一下空间分辨率是怎么实现的，可以从布鲁克官网视频中看到它用的<a href="https://www.hamamatsu.com.cn/cn/zh-cn/product/light-and-radiation-sources/microfocus-x-ray-source.html" target="_blank">日本滨松的微焦点 X 射线源</a>。具体的算法我不太理解，但是根据三英工程师的说法，理论空间分辨率可以做到焦点大小的一半。
+	<ul>
+		<li>布鲁克 SkyScan 1272 的光源型号是 L11871-20，未找到公开资料，但彩页上称的焦点 5μm，1272 的 QRM 测试卡显示其 3D 空间分辨率能达到 <span class="空间分辨率">4μm</span>。</li>
+		<li>布鲁克 SkyScan 1275 和 SkyScan 1276 的光源型号是 L10321-67，最小焦点尺寸为 5μm，1276 的 QRM 测试卡显示其 3D 空间分辨率能达到 <span class="空间分辨率">5μm</span>，同时图像清晰度不如 1272；1275 由于使用了比较低精度的探测器，像素分辨率不够，因此空间分辨率较低而没有写明。</li>
+		<li>布鲁克 X4 POSEIDON 我没有实际数据，从<a href="https://www.youtube.com/watch?v=KlNRhyQPa9c" target="_blank">公开视频</a>里能看到两种，从外观上我推测是 L10321-67 和 L12531-01，L12531-01 最小焦点尺寸为 2μm，再搭配他们的 sCMOS 高分辨率探测器，QRM 测试卡显示其 3D 空间分辨率能达到 <span class="空间分辨率">2μm</span>。</li>
+		<li>布鲁克的只是几何放大，国产品牌三英宣称他们有一个“物镜耦合探测器”技术（蔡司也有这个技术），其实就是在探测器前方增加一组光学放大镜。按 <a href="https://www.sypi.com/page/409.html" target="_blank">nanoVoxel-2000</a> 型号的公开参数我推测其光源是 L12161-07，而其焦点尺寸为 5μm，因此他们用平板探测器标称的是 <span class="空间分辨率">3μm</span>，叠加 20X 二次光学放大可以达到 <span class="空间分辨率">0.5μm</span>。这个数值很高，但目前只有 2D JIMA 证明，没有3D QRM 证明。因为QRM 模体有一定直径，导致几何放大时无法拉得非常接近光源，因此目前他们的模体做不出来。图片上能够看出来 2μm 非常清晰，并且 1μm 似乎已经有一点条纹了，如果他们的 3D 模体上有 1.5μm 这种中间值说不定就能证明比 2μm 还高了。</li>
+	</ul>
+</p>
+<p>
 	国产目前的软件优势是接入了 AI 快速识别绘制 ROI 功能，但是我还没体验过。毕竟需要每种样本去训练模型，肯定不通用，而且也不是所有厂家都有相关研发。布鲁克的 CTAn 的固定程序算法还是比较保底的，我们因为已经有了一套布鲁克的软件，所以国产软件分析能力对于我们并不是非常重要。
 </p>
 <p>
@@ -109,43 +136,9 @@
 			<td>美国/比利时</td>
 			<td>
 				我科、隔壁大学、重医生科院都有买过。布鲁克的核磁做得很好，2012 年收购 SkyScan 丰富自己的 CT 产品。<br>
-				目前型号里，离体构型最好的是 X4 POSEIDON，标称空间分辨率 ≤2μm，我科买的 SkyScan 1272 已经下市了，标称空间分辨率 ≤4μm；活体构型目前最好的是 SkyScan 1276，标称空间分辨率 ≤6μm。做高通量的话换样器很有用，1272、1275、X4 POSEIDON，有换样器。<br>
+				目前型号里，离体构型最好的是 X4 POSEIDON，标称空间分辨率 ≤2μm，我科买的 SkyScan 1272 已经下市了，标称空间分辨率 <span class="空间分辨率">4μm</span>；活体构型目前最好的是 SkyScan 1276，标称空间分辨率 <span class="空间分辨率">6μm</span>。做高通量的话换样器很有用，1272、1275、X4 POSEIDON，有换样器。<br>
 				X4 官方有做极限分辨率的展示图，能清晰的看到骨微小管、骨陷窝，我自己用 1272 扫了一下，只能勉强辨认，不够分析，这就是空间分辨率的性能差异了。所以后续各种机型在清晰度上可以参考他们的空间分辨率指标。<br>
-				<details>
-					<summary>小鼠股骨极限扫描对比图象</summary>
-					<table border="1" cellspacing="0" class="ct-pic">
-						<thead>
-							<tr>
-								<td>设备</td>
-								<td>X4 POSEIDON</td>
-								<td>SkyScan 1272</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>来源</td>
-								<td>官方展示数据</td>
-								<td>我扫的研究生的样本</td>
-							</tr>
-							<tr>
-								<td>像素大小</td>
-								<td>0.55μm</td>
-								<td>0.60μm</td>
-							</tr> 
-							<tr>
-								<td>标尺图</td>
-								<td><img src="images/CT-Collection/scaleplate-x4.webp" alt="X4 POSEIDON 标尺图"></td>
-								<td><img src="images/CT-Collection/scaleplate-1272.webp" alt="SkyScan 1272 标尺图"></td>
-							</tr>
-							<tr>
-								<td>1:1细节图</td>
-								<td><img src="images/CT-Collection/1b1-x4.webp" alt="X4 POSEIDON 1比1细节图"></td>
-								<td><img src="images/CT-Collection/1b1-1272.webp" alt="SkyScan 1272 1比1细节图"></td>
-							</tr>
-						</tbody>
-					</table>
-				</details>
-				官方软件是功能分离设计，MFC写的，架构比较老，但是适合我这种准程序员用Win32 API写宏操作，或者改标准资源文件给菜单加快捷键。图像数据为公用格式，直接可看，方便二次开发。我为了知道文件结构甚至可以通过工程师要到头文件(*.h)。3D 以体素渲染为主，软件很好用；表面渲染软件很难用，已经很多年没维护了。<br>
+				官方软件是功能分离设计，MFC写的，架构比较老，但是适合我这种准程序员用 Win32 API 写宏操作，或者改标准资源文件给菜单加快捷键。图像数据为公用格式，直接可看，方便二次开发。我为了知道文件结构甚至可以通过工程师要到头文件(*.h)。3D 以体素渲染为主，软件很好用；表面渲染软件很难用，已经很多年没维护了。<br>
 				他们同时有核磁部门和材料部门两个平行部门负责售卖，不互通不方便用户交流。活体构型的 1276 就是单纯核磁部门在卖，1272 等离体构型则是核磁部门和材料部门都卖。<br>
 				因为集团在美国，所以国内还是可能受贸易制裁禁运。
 			</td>
@@ -157,9 +150,9 @@
 			<td>瑞士</td>
 			<td>
 				大坪医院和重医口腔医院都有买过。<br>
-				目前型号里，离体构型的 µCT 50 分辨率最高，有换样器但是是内置的；活体构型的 vivaCT 80 参数上空间分辨率有点低。跟厂家联系后告诉我，他们是标的扫活体动物的空间分辨率，其他厂商都是用很小的离体样本扫的分辨率。此话确实为真，但是 vivaCT 80 扫离体小样本的能力没有数值评估。<br>
+				目前型号里，离体构型的 µCT 50 分辨率最高 <span class="空间分辨率">2μm</span>，有换样器但是是内置的；活体构型的 vivaCT 80 参数上空间分辨率有点低 <span class="空间分辨率">14μm</span>。跟厂家联系后告诉我，他们是标的扫活体动物的空间分辨率，其他厂商都是用很小的离体样本扫的分辨率。此话确实为真，但是 vivaCT 80 扫离体小样本的能力没有数值评估。<br>
 				数据可以导出 DICOM，之前我们机器坏了，学生去大坪扫了拿到我这里用 SkyScan 的软件分析。看到各种论文里用的挺多的，3D 图片以表面渲染为主，但是具体的软件我没见过。<br>
-				因为没有厂家直营，所以不是很好拿到资料，看了 µCT 50 的高分辨率图，虽然只提供了一张，但是能看到骨陷窝，符合 2μm 空间分辨率。用的是小面积 CCD 没用大尺寸 CMOS，所以价格比布鲁克便宜一些。<br>
+				因为没有厂家直营，所以不是很好拿到资料，看了 µCT 50 的高分辨率图，只提供了一张，能看到骨陷窝。用的是小面积 CCD 没用大尺寸 CMOS。<br>
 				我看到他们的彩页上说支持有限元分析：软件与设备整合一体，模拟真实力学测试，以非破坏性方式分析样品的生物力学特性，一次性获得多次力学测试才能得到的结果。如果这个功能内置了的话，就不需要去专门搜索研究怎么做了，会方便很多。
 			</td>
 			<td>✅</td>
@@ -170,7 +163,7 @@
 			<td>美国</td>
 			<td>
 				原美国PE，珀金埃尔默(PerkinElmer)2023年拆分出来的。我院临床医学中心、隔壁大学有买过。<br>
-				目前只有一款活体构型 Quantum GX3，纸面参数感觉还行。<br>
+				目前只有一款活体构型 Quantum GX3，纸面参数感觉还行，<span class="空间分辨率">5μm</span>。<br>
 				在隔壁大学见识过，但是他们是十几年前的型号，官方软件是一体化设计，数据为专有格式，可以导出 DICOM。3D 以表面渲染为主，可以鼠标直接选择区域，分析大块脂肪时用的多。<br>
 				通过大学实验员加工程师微信没通过，通过官网找到销售，结果销售不理我，问不到什么内容。
 			</td>
@@ -181,7 +174,7 @@
 			<td>蔡司<br>(zeiss)</td>
 			<td>德国</td>
 			<td>
-				产品彩页根据需求定制，做得很好，里面各种参数都写的比较详细，图片也很丰富。<br>
+				属于工业柜式 CT，产品彩页根据需求定制，做得很好，里面各种参数都写的比较详细，<span class="空间分辨率">0.95μm</span>，图片也很丰富。<br>
 				毕竟是老牌德企，什么都做的很严谨，但是也贵<br>
 				销售根据我们的需求，只推荐了一个基础款，就超预算了。
 			</td>
@@ -200,9 +193,9 @@
 			<td>天津</td>
 			<td>
 				几年前在 B 站搜 CT 视频教程看过他们的<a href="https://www.bilibili.com/video/BV19u411673P/">教学视频</a>，我觉得讲的很好就收藏了，但是当时他们还是主要做离体构型的工业 CT，现在也卖小动物 CT 了。<br>
-				目前型号里离体型应该是 nanoVoxel-1000 大小合适，标称分辨率大约是 1272，但是没有样品台垂直移动，所以扫描便利性上不如 1272；活体型是 Pixon-2000。<br>
+				目前型号里离体型应该是 nanoVoxel-1000 桌面型大小合适，但是没有样品台垂直移动，所以扫描便利性上不如 1272，因为光源可定制所以空间分辨率也不固定；活体型是 Pixon-2000，<span class="空间分辨率">5μm</span>。<br>
 				国产工业CT公司，硬件上面很多东西都能定制，据销售说已经生产换样器，给我看了一个实物图但暂时没有公开的展示图，还是属于按需定制的附属物，不是布鲁克那种可以随时拆装的成品配件。<br>
-				nanoVoxel-2000 以上支持增配 20X 光学放大物镜，空间分辨率能达到0.5μm，已经是 SkyScan 2214 的水平了，但是我没做过相关级别的图像，所以无法评估；用这个扫的小鼠股骨已经可以达到布鲁克 X4 POSEIDON 的展示图级别。<br>
+				nanoVoxel-2000 以上支持增配 20X 光学放大物镜，空间分辨率能达到<span class="空间分辨率">0.5μm</span>，但是我没做过相关级别的图像，所以无法评估；用这个扫的小鼠股骨已经可以达到布鲁克 X4 POSEIDON 的展示图级别。<br>
 				早期和国外 DrangonFly 软件合作，现在也有了自己的分析软件，具体的使用和软件还没了解过。<br>
 				我觉得他们是国产 CT 里目前网站展示做的最好的，比较清晰美观。
 			</td>
@@ -214,8 +207,8 @@
 			<td>江苏昆山</td>
 			<td>
 				科里准备采购新 CT 时，当时是美国禁运最厉害的时候，所以就自己搜了一下国产 CT。我考虑到我科做离体样本最多，所以当时主要是在找离体构型的小动物 CT，平生的产品里面有小动物离体 CT。从网站上就感觉平生是这种专注于小动物的 CT 系列，似乎是国产里面最成熟的之一。<br>
-				目前的型号里，离体型 VENUS；活体型 NEMO。离体型 VENUS 1 代空间分辨率，和 SkyScan 1272 差不多，学生出去扫过，画质确实足够，但是像素分辨率给的很奇怪，不方便用 SkyScan 的软件分析；2 代彩页宣称分辨率达到 X4 POSEIDON 级别，但目前没有相应的极限展示图可以看。
-				目前他们还没精力开发换样器。活体型 NEMO 3 代最高空间分辨率仍然和 1276 差不多。<br>
+				目前的型号里，离体型 VENUS；活体型 NEMO。离体型 VENUS 1 代空间分辨率，<span class="空间分辨率">4μm</span>，学生出去扫过，画质确实足够，但是像素分辨率给的很奇怪，不方便用 SkyScan 的软件分析；2 代彩页宣称分辨率达到 <span class="空间分辨率">1.5μm</span>，但目前没有相应的极限展示图可以看。
+				目前他们还没精力开发换样器。活体型 NEMO 3 代最高空间分辨率 <span class="空间分辨率">6μm</span>。<br>
 				软件方面我跟他们视频会议看了一下，满足基本的需求，但授权上稍微有些封闭，一机一码，不像 SkyScan 可以多台电脑安装。给他们提供了一些可以改进的建议，国产的软件改起来还是比较快。<br>
 				他们型号名字读不懂，又不标具体第几代，这点我不习惯。
 			</td>
@@ -227,10 +220,10 @@
 			<td>安徽合肥</td>
 			<td>
 				目前没有单纯的活体构型设计设备，离活一体对应的旗舰型号是 IMAGING 100pro，适合主做离体，偶尔兼顾一下活体的需求。厂家宣称的扫描速度特别快，所以不需要设计换样器。<br>
-				第一次是同事转给我的，发给我的彩页一看，空间分辨率参数莫名的高，和离体型的 SkyScan 1272 差不多，而且机箱设计也像个普通机柜，就直接产生怀疑而没有进一步了解。后来他们安排了现场讲解，我才通过视频看出来他们是用离体构型让动物旋转来扫活体，难怪空间分辨率这么高。
+				第一次是同事转给我的，发给我的彩页一看，空间分辨率参数莫名的高，<span class="空间分辨率">4μm</span>，而且机箱设计也像个普通机柜，就直接产生怀疑而没有进一步了解。后来他们安排了现场讲解，我才通过视频看出来他们是用离体构型让动物旋转来扫活体，难怪空间分辨率这么高。
 				还是有麻醉的，不然就是单纯的离体设备了。这个活体设计我目前看到的还是独一份，比较有特色。但是别人都没有采取这种活体设计，不确定是不是也有缺点，毕竟动物在旋转。<br>
 				展示时有一个空间分辨率很高的断层图，扫描+重构速度还很快，我被惊艳到了，想了解大概原理但是因为涉及商业机密被拒绝了，我猜是光源功率大+平板探测器面积大。我也只是通过现场宣讲得到的信息，可能是被厂家美化过的。<br>
-				有一个 IMAGING 100Ultra 空间分辨率可以达到 2μm，但是没有相应级别的展示图。<br>
+				有一个 IMAGING 100Ultra 空间分辨率可以达到 <span class="空间分辨率">2μm</span>，但是没有相应级别的展示图。<br>
 				具体的软件还没了解过，但是厂家说的授权比较宽松，没有限制电脑数量。<br>
 				由于他们网站做的很差，我调研时根本没有注意到这个牌子，是后来他们了解到我们在买后主动推销的。
 			</td>
@@ -242,10 +235,10 @@
 			<td>上海</td>
 			<td>
 				是厂家主动联系我的，类似三英，也是工业CT厂家进入生命科学领域。很工程师思维，销售给我讲的都是各种参数，彩页和官网的各种参数都给非常详细，看起来不错。<br>
-				目前型号里离体型，桌面型的 AX-1000CT大小合适，标称和SkyScan 1272差不多，也可以加钱进一步提升空间分辨率；活体型是 Pixon-2000，参数看起来和 1276 差不多。<br>
+				目前型号里离体型，桌面型的 AX-1000CT大小合适，标称 <span class="空间分辨率">5μm</span>，也可以加钱进一步提升空间分辨率到 <span class="空间分辨率">2μm</span>；活体型是 Pixon-2000，<span class="空间分辨率">4μm</span>（这应该是标的 2D 分辨率，3D 应该做不到）。<br>
 				立柜式的 AX-2000CT，和三英一样可以定制换样器，但我暂时没有见过展示图。<br>
-				奥影更偏向于推荐开管式 X 射线源，目前给我的展示图是开管源+平板做的，空间分辨率可能只有 3μm 左右，没用二次光学放大，所以图像比布鲁克和三营的差一点。目前在等待他们重新做更高空间分辨率的图。<br>
-				官网页面写的使用的 InstaRecon® 分层重建算法，这个布鲁克前几年也用过，但是后来合作终止了，布鲁克换成了自己的 NRecon 2.x 软件。分析软件也是和国外 DrangonFly 软件合作。<br>
+				奥影更偏向于推荐开管式 X 射线源，目前给我的展示图是开管源+平板做的，虽然标称 <span class="空间分辨率">1.5μm</span>，但是从图上我感觉空间分辨率可能只有 3μm 左右，没用二次光学放大，所以图像比布鲁克和三英的差一点。后来重新扫的，看起来也不如竞争对手清楚，还不确定他们是否是重构算法有问题。<br>
+				官网页面写的使用的 InstaRecon® 分层重建算法，这个布鲁克前几年也用过（后来合作终止了）。分析软件是和 DrangonFly、VOXION 3D 软件合作。<br>
 				官网页面数据很详细，但就是很久没更新了。
 			</td>
 			<td>✅<br>定制</td>
@@ -253,19 +246,105 @@
 		</tr>
 	</tbody>
 </table>
+<h3>小鼠长骨骨陷窝扫描对比图象</h3>
+<p>
+	自从看到布鲁克 X4 的骨陷窝图像后，我就用我自己的 1272 进行了对比扫描，用于验证新设备提升到底有多大。后来凡是要参与竞标的厂商我都让他们提供类似范围的图像，以供评估设备能力。无法识别出骨陷窝的设备图片没有纳入。<br>
+	<div style="display: inline-block; background-color: var(--excellent-color); width: auto; height: 1em; line-height: 1em; padding: 0.2em 0.5em;">存在背景色的</div>是我认为图片上骨陷窝比较清晰的。
+</p>
+<table border="1" cellspacing="0" id="ct-pic">
+	<thead>
+		<tr>
+			<td>设备型号</td>
+			<td>数据来源</td>
+			<td>扫描时间</td>
+			<td>体素尺寸</td>
+			<td>标尺图</td>
+			<td>1:1 细节图</td>
+			<td>3D 重组图</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="excellent">
+			<td>布鲁克<br>X4 POSEIDON</td>
+			<td>官方展示数据</td>
+			<td>约16小时</td>
+			<td>0.55μm</td>
+			<td><img src="images/CT-Collection/Bruker-X4-POSEIDON-标尺.webp" alt="X4 POSEIDON 标尺图"></td>
+			<td><img src="images/CT-Collection/Bruker-X4-POSEIDON-1b1.webp" alt="X4 POSEIDON 1比1细节图"></td>
+			<td><img src="images/CT-Collection/Bruker-X4-POSEIDON-3d.webp" alt="X4 POSEIDON 3D重组图"></td>
+		</tr>
+		<tr>
+			<td>布鲁克<br>SkyScan 1272</td>
+			<td>我参考 X4 的扫描参数，自己扫的研究生的样本</td>
+			<td>约8小时</td>
+			<td>0.60μm</td>
+			<td><img src="images/CT-Collection/Bruker-SkyScan1272-标尺.webp" alt="SkyScan 1272 标尺图"></td>
+			<td><img src="images/CT-Collection/Bruker-SkyScan1272-1b1.webp" alt="SkyScan 1272 1比1细节图"></td>
+			<td>看不清楚骨陷窝我就没做</td>
+		</tr>
+		<tr class="excellent">
+			<td>SCANCO<br>μ50</td>
+			<td>官方展示数据<br>应该是胫骨</td>
+			<td>约7小时<br>（用参数猜的）</td>
+			<td>0.60μm</td>
+			<td><img src="images/CT-Collection/SCANCO-μ50-标尺.webp" alt="SCANCO μ50 标尺图"></td>
+			<td><img src="images/CT-Collection/SCANCO-μ50-1b1.webp" alt="SCANCO μ50 1比1细节图"></td>
+			<td><img src="images/CT-Collection/SCANCO-μ50-3d.webp" alt="SCANCO μ50 3D重组图"></td>
+		</tr>
+		<tr>
+			<td>三英<br>nanoVoxel-2000</td>
+			<td>官方按需测试结果<br>采用 20X 光学放大</td>
+			<td>约50分钟<br>（仅口头告知）</td>
+			<td>0.85μm</td>
+			<td><img src="images/CT-Collection/三英-nanoVoxel-2000-标尺-1.webp" alt="三英 nanoVoxel-2000 标尺图"></td>
+			<td><img src="images/CT-Collection/三英-nanoVoxel-2000-1b1-1.webp" alt="三英 nanoVoxel-2000 1比1细节图"></td>
+			<td>官方没做</td>
+		</tr>
+		<tr class="excellent">
+			<td>三英<br>nanoVoxel-2000</td>
+			<td>官方按需测试结果<br>采用 20X 光学放大<br>对初次结果不满意，增加时间重扫的</td>
+			<td>约5小时<br>（仅口头告知）</td>
+			<td>1μm</td>
+			<td><img src="images/CT-Collection/三英-nanoVoxel-2000-标尺-2.webp" alt="三英 nanoVoxel-2000 标尺图"></td>
+			<td><img src="images/CT-Collection/三英-nanoVoxel-2000-1b1-2.webp" alt="三英 nanoVoxel-2000 1比1细节图"></td>
+			<td>官方没做</td>
+		</tr>
+		<tr>
+			<td>奥影<br>AX-2000CT</td>
+			<td>官方按需测试结果<br>使用开管光源扫的</td>
+			<td>约1小时<br>（仅口头告知）</td>
+			<td>1.66μm</td>
+			<td><img src="images/CT-Collection/奥影-AX-2000CT-标尺-1.webp" alt="奥影 AX-2000CT 标尺图"></td>
+			<td><img src="images/CT-Collection/奥影-AX-2000CT-1b1-1.webp" alt="奥影 AX-2000CT 1比1细节图"></td>
+			<td>官方没做</td>
+		</tr>
+		<tr>
+			<td>奥影<br>AX-2000CT</td>
+			<td>官方按需测试结果<br>对初次结果不满意，要求重扫的</td>
+			<td>约1小时<br>（仅口头告知）</td>
+			<td>0.73μm</td>
+			<td><img src="images/CT-Collection/奥影-AX-2000CT-标尺-2.webp" alt="奥影 AX-2000CT 标尺图"></td>
+			<td><img src="images/CT-Collection/奥影-AX-2000CT-1b1-2.webp" alt="奥影 AX-2000CT 1比1细节图"></td>
+			<td>官方没做</td>
+		</tr>
+	</tbody>
+</table>
+
 <h3>为什么我关注自动换样器</h3>
 <p>目前所有的自动换样器都是给离体构型设计的，也就是主要做工业流水线样本的。</p>
 <p>我科 2014 年和 SkyScan 1272 一起买的换样器，初期实验量不多，加上第一款换样器在设计上有一些缺点，所以前几年没使用。2022 年科里研究生变多了，大家为了自己的论文水平，做的试验样品也比较多，一下子就有了很多扫描需求。人工扫描很短的时间就要换一次样，人需要一直守在这里，就会占用很多时间。于是我重新开始启用换样器（通过一些变通方法来规避缺点）。为此我还研究了怎么低成本批量打标签：<a href="https://www.bilibili.com/video/BV1NauhzNEEn/">用普通打印机打印平板标签纸教学录像</a></p>
 <div id="figure">
-	<!-- 左侧：表格 -->
-	<div class="iframe-wrapper">
-		<iframe src="Micro-CT使用时间走势.html" title="使用时间走势"></iframe>
-	</div>
+	<!-- 左侧：表格数据 -->
+	<figure class="iframe-wrapper">
+		<iframe src="images/CT-Collection/Micro-CT使用时间走势.html" title="使用时间走势"></iframe>
+		<figcaption>图2a：CT 使用时间走势（表格数据）</figcaption>
+	</figure>
 
-	<!-- 右侧：SVG 图 -->
-	<div class="svg-wrapper">
+	<!-- 右侧：折线图 -->
+	<figure class="svg-wrapper">
 		<img src="images/CT-Collection/CT使用时间走势.svg" alt="CT使用时间走势折线图">
-	</div>
+		<figcaption>图2b：CT 使用时间走势（折线图）</figcaption>
+	</figure>
 </div>
 <p>
 	所以从我自己统计的使用量趋势可以看到，2023、2024年，使用量直接爆表，2024 年扫描净时间都有4500+小时，每次换样间隔时间都至少 5 分钟，还有额外的备样、调试用时，所以全年 CT 工作量肯定是超过 5000 小时的（一年 365 天只有 8760 个小时）。当时设备的相机还是 CCD，这也导致了很快把设备寿命干废了，第二年设备就因为坏了半年没有使用，趋势就掉下来了。我们是生命科学，扫的都是不同小鼠的离体骨头，都可以做出这个使用量，更不用说工厂的流水线了。使用者也需要注意维护保养，好好开空调、除湿机，另外买能够覆盖硬件损坏的维保。
@@ -275,6 +354,6 @@
 	外置的优势是，除了换样过程中，其他任何时间都可以上样，只要转盘上有样本，就可以无限工作下去。比如你放了 16 个样本，晚上 10 点你要赶车之前来查看，已经扫了 8 个，现在第 9 个扫了一半，你不用停止 CT，只需要把转盘上扫完的 8 个换成新的，就可以走了，第二天来转盘上是 16 个扫完的样本。而舱内设计需要停止当前扫描（不然有辐射），打开舱门，更换扫完的样本后，重新开始扫描。<br>
 	布鲁克的外置式设计目前看起来最好用，国产的虽然因为专利限制无法做成舱外，但便宜很多。
 </p>
-<p>更新于2026年7月22日</p>
+<p>更新于2026年8月12日</p>
 </body>
 </html>
